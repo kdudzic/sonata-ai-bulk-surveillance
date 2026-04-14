@@ -1,0 +1,67 @@
+{
+  "speech_act": [
+    "declaration of action",
+    "expression of anger",
+    "hypothetical statement",
+    "humor or joke",
+    "satire or irony",
+    "counterspeech",
+    "call to action",
+    "general commentary"
+  ],
+  "speaker_perspective": [
+    "first person",
+    "third person",
+    "direct quotation",
+    "indirect report",
+    "impersonal"
+  ],
+  "target_specificity": [
+    "none",
+    "general group",
+    "specific person",
+    "specific institution",
+    "specific place",
+    "specific event",
+    "specific object"
+  ],
+  "imminence": [
+    "none",
+    "vague future",
+    "near future",
+    "within 24 hours"
+  ],
+  "agency_cue": [
+    "none",
+    "vague reference",
+    "specific plan or preparation",
+    "claimed or demonstrated capability"
+  ],
+  "coordination": [
+    "none",
+    "call to others",
+    "shared plan",
+    "prior arrangement"
+  ],
+  "escalation": [
+    "none",
+    "shift from general to specific",
+    "response to provocation"
+  ],
+  "exculpatory_signal": [
+    "none",
+    "news or media context",
+    "counterspeech framing",
+    "ironic or satirical tone",
+    "fictional or cultural reference",
+    "hypothetical framing",
+    "emotional venting"
+  ],
+  "identity_cue": [
+    "none",
+    "name suggesting origin or ethnicity",
+    "religious reference",
+    "political affiliation",
+    "other demographic marker"
+  ]
+}

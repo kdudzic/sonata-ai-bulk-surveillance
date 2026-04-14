@@ -1,0 +1,21 @@
+[project]
+name = "sonata-ai-bulk-surveillance"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "openai>=2.31.0",
+    "tqdm>=4.67.1",
+]
+
+[project.scripts]
+sonata-generate = "generate:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+py-modules = ["generate", "openrouter_api"]

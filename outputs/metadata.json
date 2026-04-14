@@ -1,0 +1,813 @@
+{
+  "model_id": "anthropic/claude-sonnet-4.6",
+  "pair_count": 10,
+  "output_count": 20,
+  "prompt_path": "data/prompt.md",
+  "outputs_dir": "outputs",
+  "pairs": [
+    {
+      "pair_id": 1,
+      "output_ids": [
+        1,
+        2
+      ],
+      "changed_key": "escalation",
+      "changed_from": "response to provocation",
+      "changed_to": "none",
+      "outputs": [
+        {
+          "output_id": 1,
+          "filename": "pair_0001_a.txt",
+          "hidden_values": {
+            "speech_act": "humor or joke",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific person",
+            "imminence": "none",
+            "agency_cue": "claimed or demonstrated capability",
+            "coordination": "call to others",
+            "escalation": "response to provocation",
+            "exculpatory_signal": "fictional or cultural reference",
+            "identity_cue": "political affiliation"
+          },
+          "pair_member": "a"
+        },
+        {
+          "output_id": 2,
+          "filename": "pair_0001_b.txt",
+          "hidden_values": {
+            "speech_act": "humor or joke",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific person",
+            "imminence": "none",
+            "agency_cue": "claimed or demonstrated capability",
+            "coordination": "call to others",
+            "escalation": "none",
+            "exculpatory_signal": "fictional or cultural reference",
+            "identity_cue": "political affiliation"
+          },
+          "pair_member": "b"
+        }
+      ]
+    },
+    {
+      "pair_id": 2,
+      "output_ids": [
+        3,
+        4
+      ],
+      "changed_key": "agency_cue",
+      "changed_from": "vague reference",
+      "changed_to": "specific plan or preparation",
+      "outputs": [
+        {
+          "output_id": 3,
+          "filename": "pair_0002_a.txt",
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific place",
+            "imminence": "near future",
+            "agency_cue": "vague reference",
+            "coordination": "none",
+            "escalation": "response to provocation",
+            "exculpatory_signal": "counterspeech framing",
+            "identity_cue": "none"
+          },
+          "pair_member": "a"
+        },
+        {
+          "output_id": 4,
+          "filename": "pair_0002_b.txt",
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific place",
+            "imminence": "near future",
+            "agency_cue": "specific plan or preparation",
+            "coordination": "none",
+            "escalation": "response to provocation",
+            "exculpatory_signal": "counterspeech framing",
+            "identity_cue": "none"
+          },
+          "pair_member": "b"
+        }
+      ]
+    },
+    {
+      "pair_id": 3,
+      "output_ids": [
+        5,
+        6
+      ],
+      "changed_key": "imminence",
+      "changed_from": "within 24 hours",
+      "changed_to": "vague future",
+      "outputs": [
+        {
+          "output_id": 5,
+          "filename": "pair_0003_a.txt",
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific object",
+            "imminence": "within 24 hours",
+            "agency_cue": "specific plan or preparation",
+            "coordination": "call to others",
+            "escalation": "none",
+            "exculpatory_signal": "ironic or satirical tone",
+            "identity_cue": "other demographic marker"
+          },
+          "pair_member": "a"
+        },
+        {
+          "output_id": 6,
+          "filename": "pair_0003_b.txt",
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific object",
+            "imminence": "vague future",
+            "agency_cue": "specific plan or preparation",
+            "coordination": "call to others",
+            "escalation": "none",
+            "exculpatory_signal": "ironic or satirical tone",
+            "identity_cue": "other demographic marker"
+          },
+          "pair_member": "b"
+        }
+      ]
+    },
+    {
+      "pair_id": 4,
+      "output_ids": [
+        7,
+        8
+      ],
+      "changed_key": "speech_act",
+      "changed_from": "call to action",
+      "changed_to": "hypothetical statement",
+      "outputs": [
+        {
+          "output_id": 7,
+          "filename": "pair_0004_a.txt",
+          "hidden_values": {
+            "speech_act": "call to action",
+            "speaker_perspective": "first person",
+            "target_specificity": "general group",
+            "imminence": "within 24 hours",
+            "agency_cue": "none",
+            "coordination": "none",
+            "escalation": "shift from general to specific",
+            "exculpatory_signal": "ironic or satirical tone",
+            "identity_cue": "political affiliation"
+          },
+          "pair_member": "a"
+        },
+        {
+          "output_id": 8,
+          "filename": "pair_0004_b.txt",
+          "hidden_values": {
+            "speech_act": "hypothetical statement",
+            "speaker_perspective": "first person",
+            "target_specificity": "general group",
+            "imminence": "within 24 hours",
+            "agency_cue": "none",
+            "coordination": "none",
+            "escalation": "shift from general to specific",
+            "exculpatory_signal": "ironic or satirical tone",
+            "identity_cue": "political affiliation"
+          },
+          "pair_member": "b"
+        }
+      ]
+    },
+    {
+      "pair_id": 5,
+      "output_ids": [
+        9,
+        10
+      ],
+      "changed_key": "coordination",
+      "changed_from": "call to others",
+      "changed_to": "prior arrangement",
+      "outputs": [
+        {
+          "output_id": 9,
+          "filename": "pair_0005_a.txt",
+          "hidden_values": {
+            "speech_act": "call to action",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "specific institution",
+            "imminence": "none",
+            "agency_cue": "none",
+            "coordination": "call to others",
+            "escalation": "none",
+            "exculpatory_signal": "ironic or satirical tone",
+            "identity_cue": "other demographic marker"
+          },
+          "pair_member": "a"
+        },
+        {
+          "output_id": 10,
+          "filename": "pair_0005_b.txt",
+          "hidden_values": {
+            "speech_act": "call to action",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "specific institution",
+            "imminence": "none",
+            "agency_cue": "none",
+            "coordination": "prior arrangement",
+            "escalation": "none",
+            "exculpatory_signal": "ironic or satirical tone",
+            "identity_cue": "other demographic marker"
+          },
+          "pair_member": "b"
+        }
+      ]
+    },
+    {
+      "pair_id": 6,
+      "output_ids": [
+        11,
+        12
+      ],
+      "changed_key": "identity_cue",
+      "changed_from": "name suggesting origin or ethnicity",
+      "changed_to": "none",
+      "outputs": [
+        {
+          "output_id": 11,
+          "filename": "pair_0006_a.txt",
+          "hidden_values": {
+            "speech_act": "call to action",
+            "speaker_perspective": "third person",
+            "target_specificity": "none",
+            "imminence": "none",
+            "agency_cue": "none",
+            "coordination": "none",
+            "escalation": "shift from general to specific",
+            "exculpatory_signal": "hypothetical framing",
+            "identity_cue": "name suggesting origin or ethnicity"
+          },
+          "pair_member": "a"
+        },
+        {
+          "output_id": 12,
+          "filename": "pair_0006_b.txt",
+          "hidden_values": {
+            "speech_act": "call to action",
+            "speaker_perspective": "third person",
+            "target_specificity": "none",
+            "imminence": "none",
+            "agency_cue": "none",
+            "coordination": "none",
+            "escalation": "shift from general to specific",
+            "exculpatory_signal": "hypothetical framing",
+            "identity_cue": "none"
+          },
+          "pair_member": "b"
+        }
+      ]
+    },
+    {
+      "pair_id": 7,
+      "output_ids": [
+        13,
+        14
+      ],
+      "changed_key": "exculpatory_signal",
+      "changed_from": "ironic or satirical tone",
+      "changed_to": "none",
+      "outputs": [
+        {
+          "output_id": 13,
+          "filename": "pair_0007_a.txt",
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "first person",
+            "target_specificity": "specific place",
+            "imminence": "none",
+            "agency_cue": "claimed or demonstrated capability",
+            "coordination": "shared plan",
+            "escalation": "response to provocation",
+            "exculpatory_signal": "ironic or satirical tone",
+            "identity_cue": "political affiliation"
+          },
+          "pair_member": "a"
+        },
+        {
+          "output_id": 14,
+          "filename": "pair_0007_b.txt",
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "first person",
+            "target_specificity": "specific place",
+            "imminence": "none",
+            "agency_cue": "claimed or demonstrated capability",
+            "coordination": "shared plan",
+            "escalation": "response to provocation",
+            "exculpatory_signal": "none",
+            "identity_cue": "political affiliation"
+          },
+          "pair_member": "b"
+        }
+      ]
+    },
+    {
+      "pair_id": 8,
+      "output_ids": [
+        15,
+        16
+      ],
+      "changed_key": "coordination",
+      "changed_from": "prior arrangement",
+      "changed_to": "shared plan",
+      "outputs": [
+        {
+          "output_id": 15,
+          "filename": "pair_0008_a.txt",
+          "hidden_values": {
+            "speech_act": "hypothetical statement",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "general group",
+            "imminence": "near future",
+            "agency_cue": "claimed or demonstrated capability",
+            "coordination": "prior arrangement",
+            "escalation": "response to provocation",
+            "exculpatory_signal": "ironic or satirical tone",
+            "identity_cue": "religious reference"
+          },
+          "pair_member": "a"
+        },
+        {
+          "output_id": 16,
+          "filename": "pair_0008_b.txt",
+          "hidden_values": {
+            "speech_act": "hypothetical statement",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "general group",
+            "imminence": "near future",
+            "agency_cue": "claimed or demonstrated capability",
+            "coordination": "shared plan",
+            "escalation": "response to provocation",
+            "exculpatory_signal": "ironic or satirical tone",
+            "identity_cue": "religious reference"
+          },
+          "pair_member": "b"
+        }
+      ]
+    },
+    {
+      "pair_id": 9,
+      "output_ids": [
+        17,
+        18
+      ],
+      "changed_key": "coordination",
+      "changed_from": "none",
+      "changed_to": "prior arrangement",
+      "outputs": [
+        {
+          "output_id": 17,
+          "filename": "pair_0009_a.txt",
+          "hidden_values": {
+            "speech_act": "counterspeech",
+            "speaker_perspective": "first person",
+            "target_specificity": "specific object",
+            "imminence": "near future",
+            "agency_cue": "claimed or demonstrated capability",
+            "coordination": "none",
+            "escalation": "none",
+            "exculpatory_signal": "none",
+            "identity_cue": "religious reference"
+          },
+          "pair_member": "a"
+        },
+        {
+          "output_id": 18,
+          "filename": "pair_0009_b.txt",
+          "hidden_values": {
+            "speech_act": "counterspeech",
+            "speaker_perspective": "first person",
+            "target_specificity": "specific object",
+            "imminence": "near future",
+            "agency_cue": "claimed or demonstrated capability",
+            "coordination": "prior arrangement",
+            "escalation": "none",
+            "exculpatory_signal": "none",
+            "identity_cue": "religious reference"
+          },
+          "pair_member": "b"
+        }
+      ]
+    },
+    {
+      "pair_id": 10,
+      "output_ids": [
+        19,
+        20
+      ],
+      "changed_key": "target_specificity",
+      "changed_from": "none",
+      "changed_to": "specific person",
+      "outputs": [
+        {
+          "output_id": 19,
+          "filename": "pair_0010_a.txt",
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "none",
+            "imminence": "vague future",
+            "agency_cue": "vague reference",
+            "coordination": "prior arrangement",
+            "escalation": "shift from general to specific",
+            "exculpatory_signal": "fictional or cultural reference",
+            "identity_cue": "political affiliation"
+          },
+          "pair_member": "a"
+        },
+        {
+          "output_id": 20,
+          "filename": "pair_0010_b.txt",
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "specific person",
+            "imminence": "vague future",
+            "agency_cue": "vague reference",
+            "coordination": "prior arrangement",
+            "escalation": "shift from general to specific",
+            "exculpatory_signal": "fictional or cultural reference",
+            "identity_cue": "political affiliation"
+          },
+          "pair_member": "b"
+        }
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "output_id": 1,
+      "filename": "pair_0001_a.txt",
+      "pair_id": 1,
+      "paired_with_output_id": 2,
+      "hidden_values": {
+        "speech_act": "humor or joke",
+        "speaker_perspective": "direct quotation",
+        "target_specificity": "specific person",
+        "imminence": "none",
+        "agency_cue": "claimed or demonstrated capability",
+        "coordination": "call to others",
+        "escalation": "response to provocation",
+        "exculpatory_signal": "fictional or cultural reference",
+        "identity_cue": "political affiliation"
+      },
+      "pair_member": "a"
+    },
+    {
+      "output_id": 2,
+      "filename": "pair_0001_b.txt",
+      "pair_id": 1,
+      "paired_with_output_id": 1,
+      "hidden_values": {
+        "speech_act": "humor or joke",
+        "speaker_perspective": "direct quotation",
+        "target_specificity": "specific person",
+        "imminence": "none",
+        "agency_cue": "claimed or demonstrated capability",
+        "coordination": "call to others",
+        "escalation": "none",
+        "exculpatory_signal": "fictional or cultural reference",
+        "identity_cue": "political affiliation"
+      },
+      "pair_member": "b"
+    },
+    {
+      "output_id": 3,
+      "filename": "pair_0002_a.txt",
+      "pair_id": 2,
+      "paired_with_output_id": 4,
+      "hidden_values": {
+        "speech_act": "general commentary",
+        "speaker_perspective": "direct quotation",
+        "target_specificity": "specific place",
+        "imminence": "near future",
+        "agency_cue": "vague reference",
+        "coordination": "none",
+        "escalation": "response to provocation",
+        "exculpatory_signal": "counterspeech framing",
+        "identity_cue": "none"
+      },
+      "pair_member": "a"
+    },
+    {
+      "output_id": 4,
+      "filename": "pair_0002_b.txt",
+      "pair_id": 2,
+      "paired_with_output_id": 3,
+      "hidden_values": {
+        "speech_act": "general commentary",
+        "speaker_perspective": "direct quotation",
+        "target_specificity": "specific place",
+        "imminence": "near future",
+        "agency_cue": "specific plan or preparation",
+        "coordination": "none",
+        "escalation": "response to provocation",
+        "exculpatory_signal": "counterspeech framing",
+        "identity_cue": "none"
+      },
+      "pair_member": "b"
+    },
+    {
+      "output_id": 5,
+      "filename": "pair_0003_a.txt",
+      "pair_id": 3,
+      "paired_with_output_id": 6,
+      "hidden_values": {
+        "speech_act": "expression of anger",
+        "speaker_perspective": "direct quotation",
+        "target_specificity": "specific object",
+        "imminence": "within 24 hours",
+        "agency_cue": "specific plan or preparation",
+        "coordination": "call to others",
+        "escalation": "none",
+        "exculpatory_signal": "ironic or satirical tone",
+        "identity_cue": "other demographic marker"
+      },
+      "pair_member": "a"
+    },
+    {
+      "output_id": 6,
+      "filename": "pair_0003_b.txt",
+      "pair_id": 3,
+      "paired_with_output_id": 5,
+      "hidden_values": {
+        "speech_act": "expression of anger",
+        "speaker_perspective": "direct quotation",
+        "target_specificity": "specific object",
+        "imminence": "vague future",
+        "agency_cue": "specific plan or preparation",
+        "coordination": "call to others",
+        "escalation": "none",
+        "exculpatory_signal": "ironic or satirical tone",
+        "identity_cue": "other demographic marker"
+      },
+      "pair_member": "b"
+    },
+    {
+      "output_id": 7,
+      "filename": "pair_0004_a.txt",
+      "pair_id": 4,
+      "paired_with_output_id": 8,
+      "hidden_values": {
+        "speech_act": "call to action",
+        "speaker_perspective": "first person",
+        "target_specificity": "general group",
+        "imminence": "within 24 hours",
+        "agency_cue": "none",
+        "coordination": "none",
+        "escalation": "shift from general to specific",
+        "exculpatory_signal": "ironic or satirical tone",
+        "identity_cue": "political affiliation"
+      },
+      "pair_member": "a"
+    },
+    {
+      "output_id": 8,
+      "filename": "pair_0004_b.txt",
+      "pair_id": 4,
+      "paired_with_output_id": 7,
+      "hidden_values": {
+        "speech_act": "hypothetical statement",
+        "speaker_perspective": "first person",
+        "target_specificity": "general group",
+        "imminence": "within 24 hours",
+        "agency_cue": "none",
+        "coordination": "none",
+        "escalation": "shift from general to specific",
+        "exculpatory_signal": "ironic or satirical tone",
+        "identity_cue": "political affiliation"
+      },
+      "pair_member": "b"
+    },
+    {
+      "output_id": 9,
+      "filename": "pair_0005_a.txt",
+      "pair_id": 5,
+      "paired_with_output_id": 10,
+      "hidden_values": {
+        "speech_act": "call to action",
+        "speaker_perspective": "indirect report",
+        "target_specificity": "specific institution",
+        "imminence": "none",
+        "agency_cue": "none",
+        "coordination": "call to others",
+        "escalation": "none",
+        "exculpatory_signal": "ironic or satirical tone",
+        "identity_cue": "other demographic marker"
+      },
+      "pair_member": "a"
+    },
+    {
+      "output_id": 10,
+      "filename": "pair_0005_b.txt",
+      "pair_id": 5,
+      "paired_with_output_id": 9,
+      "hidden_values": {
+        "speech_act": "call to action",
+        "speaker_perspective": "indirect report",
+        "target_specificity": "specific institution",
+        "imminence": "none",
+        "agency_cue": "none",
+        "coordination": "prior arrangement",
+        "escalation": "none",
+        "exculpatory_signal": "ironic or satirical tone",
+        "identity_cue": "other demographic marker"
+      },
+      "pair_member": "b"
+    },
+    {
+      "output_id": 11,
+      "filename": "pair_0006_a.txt",
+      "pair_id": 6,
+      "paired_with_output_id": 12,
+      "hidden_values": {
+        "speech_act": "call to action",
+        "speaker_perspective": "third person",
+        "target_specificity": "none",
+        "imminence": "none",
+        "agency_cue": "none",
+        "coordination": "none",
+        "escalation": "shift from general to specific",
+        "exculpatory_signal": "hypothetical framing",
+        "identity_cue": "name suggesting origin or ethnicity"
+      },
+      "pair_member": "a"
+    },
+    {
+      "output_id": 12,
+      "filename": "pair_0006_b.txt",
+      "pair_id": 6,
+      "paired_with_output_id": 11,
+      "hidden_values": {
+        "speech_act": "call to action",
+        "speaker_perspective": "third person",
+        "target_specificity": "none",
+        "imminence": "none",
+        "agency_cue": "none",
+        "coordination": "none",
+        "escalation": "shift from general to specific",
+        "exculpatory_signal": "hypothetical framing",
+        "identity_cue": "none"
+      },
+      "pair_member": "b"
+    },
+    {
+      "output_id": 13,
+      "filename": "pair_0007_a.txt",
+      "pair_id": 7,
+      "paired_with_output_id": 14,
+      "hidden_values": {
+        "speech_act": "expression of anger",
+        "speaker_perspective": "first person",
+        "target_specificity": "specific place",
+        "imminence": "none",
+        "agency_cue": "claimed or demonstrated capability",
+        "coordination": "shared plan",
+        "escalation": "response to provocation",
+        "exculpatory_signal": "ironic or satirical tone",
+        "identity_cue": "political affiliation"
+      },
+      "pair_member": "a"
+    },
+    {
+      "output_id": 14,
+      "filename": "pair_0007_b.txt",
+      "pair_id": 7,
+      "paired_with_output_id": 13,
+      "hidden_values": {
+        "speech_act": "expression of anger",
+        "speaker_perspective": "first person",
+        "target_specificity": "specific place",
+        "imminence": "none",
+        "agency_cue": "claimed or demonstrated capability",
+        "coordination": "shared plan",
+        "escalation": "response to provocation",
+        "exculpatory_signal": "none",
+        "identity_cue": "political affiliation"
+      },
+      "pair_member": "b"
+    },
+    {
+      "output_id": 15,
+      "filename": "pair_0008_a.txt",
+      "pair_id": 8,
+      "paired_with_output_id": 16,
+      "hidden_values": {
+        "speech_act": "hypothetical statement",
+        "speaker_perspective": "indirect report",
+        "target_specificity": "general group",
+        "imminence": "near future",
+        "agency_cue": "claimed or demonstrated capability",
+        "coordination": "prior arrangement",
+        "escalation": "response to provocation",
+        "exculpatory_signal": "ironic or satirical tone",
+        "identity_cue": "religious reference"
+      },
+      "pair_member": "a"
+    },
+    {
+      "output_id": 16,
+      "filename": "pair_0008_b.txt",
+      "pair_id": 8,
+      "paired_with_output_id": 15,
+      "hidden_values": {
+        "speech_act": "hypothetical statement",
+        "speaker_perspective": "indirect report",
+        "target_specificity": "general group",
+        "imminence": "near future",
+        "agency_cue": "claimed or demonstrated capability",
+        "coordination": "shared plan",
+        "escalation": "response to provocation",
+        "exculpatory_signal": "ironic or satirical tone",
+        "identity_cue": "religious reference"
+      },
+      "pair_member": "b"
+    },
+    {
+      "output_id": 17,
+      "filename": "pair_0009_a.txt",
+      "pair_id": 9,
+      "paired_with_output_id": 18,
+      "hidden_values": {
+        "speech_act": "counterspeech",
+        "speaker_perspective": "first person",
+        "target_specificity": "specific object",
+        "imminence": "near future",
+        "agency_cue": "claimed or demonstrated capability",
+        "coordination": "none",
+        "escalation": "none",
+        "exculpatory_signal": "none",
+        "identity_cue": "religious reference"
+      },
+      "pair_member": "a"
+    },
+    {
+      "output_id": 18,
+      "filename": "pair_0009_b.txt",
+      "pair_id": 9,
+      "paired_with_output_id": 17,
+      "hidden_values": {
+        "speech_act": "counterspeech",
+        "speaker_perspective": "first person",
+        "target_specificity": "specific object",
+        "imminence": "near future",
+        "agency_cue": "claimed or demonstrated capability",
+        "coordination": "prior arrangement",
+        "escalation": "none",
+        "exculpatory_signal": "none",
+        "identity_cue": "religious reference"
+      },
+      "pair_member": "b"
+    },
+    {
+      "output_id": 19,
+      "filename": "pair_0010_a.txt",
+      "pair_id": 10,
+      "paired_with_output_id": 20,
+      "hidden_values": {
+        "speech_act": "declaration of action",
+        "speaker_perspective": "indirect report",
+        "target_specificity": "none",
+        "imminence": "vague future",
+        "agency_cue": "vague reference",
+        "coordination": "prior arrangement",
+        "escalation": "shift from general to specific",
+        "exculpatory_signal": "fictional or cultural reference",
+        "identity_cue": "political affiliation"
+      },
+      "pair_member": "a"
+    },
+    {
+      "output_id": 20,
+      "filename": "pair_0010_b.txt",
+      "pair_id": 10,
+      "paired_with_output_id": 19,
+      "hidden_values": {
+        "speech_act": "declaration of action",
+        "speaker_perspective": "indirect report",
+        "target_specificity": "specific person",
+        "imminence": "vague future",
+        "agency_cue": "vague reference",
+        "coordination": "prior arrangement",
+        "escalation": "shift from general to specific",
+        "exculpatory_signal": "fictional or cultural reference",
+        "identity_cue": "political affiliation"
+      },
+      "pair_member": "b"
+    }
+  ],
+  "hidden_variables_path": "data/hidden_variables.json",
+  "rng_seed": 42
+}
