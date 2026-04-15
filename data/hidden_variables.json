@@ -6,7 +6,6 @@
     "humor or joke",
     "satire or irony",
     "counterspeech",
-    "call to action",
     "general commentary"
   ],
   "speaker_perspective": [
@@ -37,17 +36,6 @@
     "specific plan or preparation",
     "claimed or demonstrated capability"
   ],
-  "coordination": [
-    "none",
-    "call to others",
-    "shared plan",
-    "prior arrangement"
-  ],
-  "escalation": [
-    "none",
-    "shift from general to specific",
-    "response to provocation"
-  ],
   "exculpatory_signal": [
     "none",
     "news or media context",
@@ -56,12 +44,5 @@
     "fictional or cultural reference",
     "hypothetical framing",
     "emotional venting"
-  ],
-  "identity_cue": [
-    "none",
-    "name suggesting origin or ethnicity",
-    "religious reference",
-    "political affiliation",
-    "other demographic marker"
   ]
 }

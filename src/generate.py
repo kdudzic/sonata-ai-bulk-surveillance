@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import random
+import re
 from copy import deepcopy
 from pathlib import Path
 
@@ -16,6 +17,7 @@ PROMPT_PATH = REPO_ROOT / "data" / "prompt.md"
 HIDDEN_VARIABLES_PATH = REPO_ROOT / "data" / "hidden_variables.json"
 OUTPUTS_DIR = REPO_ROOT / "outputs"
 METADATA_PATH = OUTPUTS_DIR / "metadata.json"
+GENERATED_POSTS_PATH = OUTPUTS_DIR / "generated_posts.json"
 RNG_SEED = 42
 PAIR_COUNT = 10
 
@@ -32,17 +34,17 @@ def choose_hidden_values(
     }
 
 
-def mutate_single_variable(
-    hidden_values: dict[str, str],
+def choose_pair_hidden_values(
     hidden_variables: dict[str, list[str]],
     rng: random.Random,
-) -> tuple[dict[str, str], str, str]:
-    changed_key = rng.choice(list(hidden_values.keys()))
-    current_value = hidden_values[changed_key]
+) -> tuple[dict[str, str], dict[str, str], str, str, str]:
+    shared_values = choose_hidden_values(hidden_variables, rng)
+    changed_key = rng.choice(list(hidden_variables.keys()))
+    case_a_value = shared_values[changed_key]
     alternatives = [
         value
         for value in hidden_variables[changed_key]
-        if value != current_value
+        if value != case_a_value
     ]
 
     if not alternatives:
@@ -50,16 +52,59 @@ def mutate_single_variable(
             f"No alternative values available for '{changed_key}'."
         )
 
-    updated_values = deepcopy(hidden_values)
-    updated_values[changed_key] = rng.choice(alternatives)
-    return updated_values, changed_key, current_value
+    case_b_value = rng.choice(alternatives)
+    case_a_hidden_values = deepcopy(shared_values)
+    case_b_hidden_values = deepcopy(shared_values)
+    case_a_hidden_values[changed_key] = case_a_value
+    case_b_hidden_values[changed_key] = case_b_value
+    return (
+        case_a_hidden_values,
+        case_b_hidden_values,
+        changed_key,
+        case_a_value,
+        case_b_value,
+    )
 
 
-def render_prompt(template: str, hidden_values: dict[str, str]) -> str:
+def render_prompt(
+    template: str,
+    shared_values: dict[str, str],
+    changed_key: str,
+    case_a_value: str,
+    case_b_value: str,
+) -> str:
     prompt = template
-    for key, value in hidden_values.items():
+    prompt_values = deepcopy(shared_values)
+    prompt_values[changed_key] = (
+        f"CASE_A={case_a_value}; CASE_B={case_b_value}"
+    )
+    prompt_values["changed_variable"] = changed_key
+    prompt_values["case_a_value"] = case_a_value
+    prompt_values["case_b_value"] = case_b_value
+
+    for key, value in prompt_values.items():
         prompt = prompt.replace(f"{{{key}}}", value)
     return prompt
+
+
+def parse_case_pair(response: str) -> tuple[str, str]:
+    print(response)
+    match = re.search(
+        r"CASE_A:\s*(.*?)\s*CASE_B:\s*(.*)\Z",
+        response.strip(),
+        re.DOTALL,
+    )
+    if match is None:
+        raise ValueError(
+            "Model response did not match the expected CASE_A/CASE_B format."
+        )
+
+    case_a_text = match.group(1).strip()
+    case_b_text = match.group(2).strip()
+    if not case_a_text or not case_b_text:
+        raise ValueError("Model response contained an empty CASE_A or CASE_B.")
+
+    return case_a_text, case_b_text
 
 
 def write_metadata(metadata: dict) -> None:
@@ -69,8 +114,11 @@ def write_metadata(metadata: dict) -> None:
     )
 
 
-def build_output_filename(pair_id: int, pair_member: str) -> str:
-    return f"pair_{pair_id:04d}_{pair_member}.txt"
+def write_generated_posts(generated_posts: dict[str, dict[str, str]]) -> None:
+    GENERATED_POSTS_PATH.write_text(
+        json.dumps(generated_posts, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
 
 
 def main() -> None:
@@ -85,98 +133,68 @@ def main() -> None:
         "model_id": MODEL_ID,
         "rng_seed": RNG_SEED,
         "pair_count": PAIR_COUNT,
+        "api_call_count": PAIR_COUNT,
         "output_count": PAIR_COUNT * 2,
         "prompt_path": "data/prompt.md",
         "hidden_variables_path": "data/hidden_variables.json",
         "outputs_dir": "outputs",
         "pairs": [],
-        "outputs": [],
     }
-
-    output_index = 1
+    generated_posts: dict[str, dict[str, str]] = {}
 
     with tqdm(
-        total=PAIR_COUNT * 2, desc="Generating outputs", unit="output"
+        total=PAIR_COUNT, desc="Generating pairs", unit="pair"
     ) as progress:
         for pair_index in range(1, PAIR_COUNT + 1):
-            first_hidden_values = choose_hidden_values(hidden_variables, rng)
-            second_hidden_values, changed_key, previous_value = (
-                mutate_single_variable(
-                    first_hidden_values, hidden_variables, rng
-                )
-            )
+            (
+                case_a_hidden_values,
+                case_b_hidden_values,
+                changed_key,
+                case_a_value,
+                case_b_value,
+            ) = choose_pair_hidden_values(hidden_variables, rng)
 
-            pair_output_ids = [output_index, output_index + 1]
-            prompts = [
-                render_prompt(prompt_template, first_hidden_values),
-                render_prompt(prompt_template, second_hidden_values),
-            ]
-            hidden_value_sets = [first_hidden_values, second_hidden_values]
+            prompt = render_prompt(
+                template=prompt_template,
+                shared_values=case_a_hidden_values,
+                changed_key=changed_key,
+                case_a_value=case_a_value,
+                case_b_value=case_b_value,
+            )
+            case_a_text, case_b_text = parse_case_pair(client.generate(prompt))
 
             progress.set_postfix(
                 pair=pair_index,
                 changed_key=changed_key,
-                output=f"{pair_output_ids[0]:04d}-{pair_output_ids[1]:04d}",
+                cases="A/B",
             )
-
-            for local_index, (prompt, hidden_values) in enumerate(
-                zip(prompts, hidden_value_sets, strict=True)
-            ):
-                current_output_id = pair_output_ids[local_index]
-                paired_output_id = (
-                    pair_output_ids[1]
-                    if local_index == 0
-                    else pair_output_ids[0]
-                )
-                pair_member = "a" if local_index == 0 else "b"
-                filename = build_output_filename(pair_index, pair_member)
-                output_path = OUTPUTS_DIR / filename
-                response = client.generate(prompt)
-
-                output_path.write_text(response, encoding="utf-8")
-
-                cast_outputs = metadata["outputs"]
-                assert isinstance(cast_outputs, list)
-                cast_outputs.append(
-                    {
-                        "output_id": current_output_id,
-                        "filename": filename,
-                        "pair_id": pair_index,
-                        "pair_member": pair_member,
-                        "paired_with_output_id": paired_output_id,
-                        "hidden_values": hidden_values,
-                    }
-                )
-                progress.update(1)
 
             cast_pairs = metadata["pairs"]
             assert isinstance(cast_pairs, list)
             cast_pairs.append(
                 {
                     "pair_id": pair_index,
-                    "output_ids": pair_output_ids,
                     "changed_key": changed_key,
-                    "changed_from": previous_value,
-                    "changed_to": second_hidden_values[changed_key],
-                    "outputs": [
-                        {
-                            "output_id": pair_output_ids[0],
-                            "filename": build_output_filename(pair_index, "a"),
-                            "pair_member": "a",
-                            "hidden_values": first_hidden_values,
+                    "changed_from": case_a_value,
+                    "changed_to": case_b_value,
+                    "cases": {
+                        "CASE_A": {
+                            "hidden_values": case_a_hidden_values,
                         },
-                        {
-                            "output_id": pair_output_ids[1],
-                            "filename": build_output_filename(pair_index, "b"),
-                            "pair_member": "b",
-                            "hidden_values": second_hidden_values,
+                        "CASE_B": {
+                            "hidden_values": case_b_hidden_values,
                         },
-                    ],
+                    },
                 }
             )
+            generated_posts[str(pair_index)] = {
+                "CASE_A": case_a_text,
+                "CASE_B": case_b_text,
+            }
 
             write_metadata(metadata)
-            output_index += 2
+            write_generated_posts(generated_posts)
+            progress.update(1)
 
 
 if __name__ == "__main__":
