@@ -88,7 +88,6 @@ def render_prompt(
 
 
 def parse_case_pair(response: str) -> tuple[str, str]:
-    print(response)
     match = re.search(
         r"CASE_A:\s*(.*?)\s*CASE_B:\s*(.*)\Z",
         response.strip(),
@@ -121,6 +120,70 @@ def write_generated_posts(generated_posts: dict[str, dict[str, str]]) -> None:
     )
 
 
+def build_metadata() -> dict[str, object]:
+    return {
+        "model_id": MODEL_ID,
+        "rng_seed": RNG_SEED,
+        "pair_count": 0,
+        "api_call_count": 0,
+        "output_count": 0,
+        "prompt_path": "data/prompt.md",
+        "hidden_variables_path": "data/hidden_variables.json",
+        "outputs_dir": "outputs",
+        "pairs": [],
+    }
+
+
+def load_metadata() -> dict[str, object]:
+    if not METADATA_PATH.exists():
+        return build_metadata()
+
+    metadata = json.loads(METADATA_PATH.read_text(encoding="utf-8"))
+    if "pairs" not in metadata or not isinstance(metadata["pairs"], list):
+        metadata["pairs"] = []
+    metadata["model_id"] = MODEL_ID
+    metadata["rng_seed"] = RNG_SEED
+    metadata["prompt_path"] = "data/prompt.md"
+    metadata["hidden_variables_path"] = "data/hidden_variables.json"
+    metadata["outputs_dir"] = "outputs"
+    return metadata
+
+
+def load_generated_posts() -> dict[str, dict[str, str]]:
+    if not GENERATED_POSTS_PATH.exists():
+        return {}
+    return json.loads(GENERATED_POSTS_PATH.read_text(encoding="utf-8"))
+
+
+def next_pair_id(
+    metadata: dict[str, object], generated_posts: dict[str, dict[str, str]]
+) -> int:
+    pair_ids = []
+
+    pairs = metadata.get("pairs", [])
+    if isinstance(pairs, list):
+        pair_ids.extend(
+            pair["pair_id"]
+            for pair in pairs
+            if isinstance(pair, dict) and isinstance(pair.get("pair_id"), int)
+        )
+
+    pair_ids.extend(
+        int(pair_id) for pair_id in generated_posts if pair_id.isdigit()
+    )
+
+    return max(pair_ids, default=0) + 1
+
+
+def sync_metadata_counts(metadata: dict[str, object]) -> None:
+    pairs = metadata.get("pairs", [])
+    assert isinstance(pairs, list)
+    pair_count = len(pairs)
+    metadata["pair_count"] = pair_count
+    metadata["api_call_count"] = pair_count
+    metadata["output_count"] = pair_count * 2
+
+
 def main() -> None:
     rng = random.Random(RNG_SEED)
     hidden_variables = load_hidden_variables()
@@ -129,23 +192,17 @@ def main() -> None:
     OUTPUTS_DIR.mkdir(exist_ok=True)
 
     client = OpenRouterAPI(model_name=MODEL_ID, api_key_path=str(API_KEY_PATH))
-    metadata: dict[str, object] = {
-        "model_id": MODEL_ID,
-        "rng_seed": RNG_SEED,
-        "pair_count": PAIR_COUNT,
-        "api_call_count": PAIR_COUNT,
-        "output_count": PAIR_COUNT * 2,
-        "prompt_path": "data/prompt.md",
-        "hidden_variables_path": "data/hidden_variables.json",
-        "outputs_dir": "outputs",
-        "pairs": [],
-    }
-    generated_posts: dict[str, dict[str, str]] = {}
+    metadata = load_metadata()
+    generated_posts = load_generated_posts()
+    start_pair_id = next_pair_id(metadata, generated_posts)
+    sync_metadata_counts(metadata)
+    for _ in range(start_pair_id - 1):
+        choose_pair_hidden_values(hidden_variables, rng)
 
     with tqdm(
         total=PAIR_COUNT, desc="Generating pairs", unit="pair"
     ) as progress:
-        for pair_index in range(1, PAIR_COUNT + 1):
+        for pair_index in range(start_pair_id, start_pair_id + PAIR_COUNT):
             (
                 case_a_hidden_values,
                 case_b_hidden_values,
@@ -192,6 +249,7 @@ def main() -> None:
                 "CASE_B": case_b_text,
             }
 
+            sync_metadata_counts(metadata)
             write_metadata(metadata)
             write_generated_posts(generated_posts)
             progress.update(1)

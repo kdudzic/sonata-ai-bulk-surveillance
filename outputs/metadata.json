@@ -1,9 +1,9 @@
 {
   "model_id": "anthropic/claude-sonnet-4.6",
   "rng_seed": 42,
-  "pair_count": 10,
-  "api_call_count": 10,
-  "output_count": 20,
+  "pair_count": 100,
+  "api_call_count": 100,
+  "output_count": 200,
   "prompt_path": "data/prompt.md",
   "hidden_variables_path": "data/hidden_variables.json",
   "outputs_dir": "outputs",
@@ -283,6 +283,2526 @@
             "target_specificity": "general group",
             "imminence": "near future",
             "agency_cue": "vague reference",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 11,
+      "changed_key": "exculpatory_signal",
+      "changed_from": "fictional or cultural reference",
+      "changed_to": "news or media context",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "counterspeech",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific event",
+            "imminence": "none",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "fictional or cultural reference"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "counterspeech",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific event",
+            "imminence": "none",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "news or media context"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 12,
+      "changed_key": "target_specificity",
+      "changed_from": "specific institution",
+      "changed_to": "none",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "specific institution",
+            "imminence": "near future",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "none",
+            "imminence": "near future",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 13,
+      "changed_key": "speech_act",
+      "changed_from": "expression of anger",
+      "changed_to": "hypothetical statement",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "first person",
+            "target_specificity": "specific object",
+            "imminence": "near future",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "hypothetical statement",
+            "speaker_perspective": "first person",
+            "target_specificity": "specific object",
+            "imminence": "near future",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 14,
+      "changed_key": "imminence",
+      "changed_from": "within 24 hours",
+      "changed_to": "none",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "satire or irony",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "general group",
+            "imminence": "within 24 hours",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "satire or irony",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "general group",
+            "imminence": "none",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 15,
+      "changed_key": "imminence",
+      "changed_from": "near future",
+      "changed_to": "vague future",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "hypothetical statement",
+            "speaker_perspective": "third person",
+            "target_specificity": "general group",
+            "imminence": "near future",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "fictional or cultural reference"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "hypothetical statement",
+            "speaker_perspective": "third person",
+            "target_specificity": "general group",
+            "imminence": "vague future",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "fictional or cultural reference"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 16,
+      "changed_key": "speech_act",
+      "changed_from": "expression of anger",
+      "changed_to": "declaration of action",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "third person",
+            "target_specificity": "specific place",
+            "imminence": "within 24 hours",
+            "agency_cue": "none",
+            "exculpatory_signal": "emotional venting"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "third person",
+            "target_specificity": "specific place",
+            "imminence": "within 24 hours",
+            "agency_cue": "none",
+            "exculpatory_signal": "emotional venting"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 17,
+      "changed_key": "imminence",
+      "changed_from": "within 24 hours",
+      "changed_to": "near future",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "third person",
+            "target_specificity": "specific object",
+            "imminence": "within 24 hours",
+            "agency_cue": "none",
+            "exculpatory_signal": "ironic or satirical tone"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "third person",
+            "target_specificity": "specific object",
+            "imminence": "near future",
+            "agency_cue": "none",
+            "exculpatory_signal": "ironic or satirical tone"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 18,
+      "changed_key": "agency_cue",
+      "changed_from": "none",
+      "changed_to": "specific plan or preparation",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "humor or joke",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific person",
+            "imminence": "none",
+            "agency_cue": "none",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "humor or joke",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific person",
+            "imminence": "none",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 19,
+      "changed_key": "imminence",
+      "changed_from": "near future",
+      "changed_to": "none",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "none",
+            "imminence": "near future",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "news or media context"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "none",
+            "imminence": "none",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "news or media context"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 20,
+      "changed_key": "exculpatory_signal",
+      "changed_from": "emotional venting",
+      "changed_to": "counterspeech framing",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "counterspeech",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific place",
+            "imminence": "vague future",
+            "agency_cue": "none",
+            "exculpatory_signal": "emotional venting"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "counterspeech",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific place",
+            "imminence": "vague future",
+            "agency_cue": "none",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 21,
+      "changed_key": "speaker_perspective",
+      "changed_from": "impersonal",
+      "changed_to": "first person",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific place",
+            "imminence": "vague future",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "first person",
+            "target_specificity": "specific place",
+            "imminence": "vague future",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 22,
+      "changed_key": "target_specificity",
+      "changed_from": "specific institution",
+      "changed_to": "general group",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "satire or irony",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific institution",
+            "imminence": "none",
+            "agency_cue": "none",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "satire or irony",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "general group",
+            "imminence": "none",
+            "agency_cue": "none",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 23,
+      "changed_key": "imminence",
+      "changed_from": "none",
+      "changed_to": "vague future",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "third person",
+            "target_specificity": "specific place",
+            "imminence": "none",
+            "agency_cue": "none",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "third person",
+            "target_specificity": "specific place",
+            "imminence": "vague future",
+            "agency_cue": "none",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 24,
+      "changed_key": "imminence",
+      "changed_from": "vague future",
+      "changed_to": "within 24 hours",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific object",
+            "imminence": "vague future",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific object",
+            "imminence": "within 24 hours",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 25,
+      "changed_key": "exculpatory_signal",
+      "changed_from": "fictional or cultural reference",
+      "changed_to": "emotional venting",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific place",
+            "imminence": "within 24 hours",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "fictional or cultural reference"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific place",
+            "imminence": "within 24 hours",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "emotional venting"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 26,
+      "changed_key": "imminence",
+      "changed_from": "near future",
+      "changed_to": "none",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific institution",
+            "imminence": "near future",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "fictional or cultural reference"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific institution",
+            "imminence": "none",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "fictional or cultural reference"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 27,
+      "changed_key": "agency_cue",
+      "changed_from": "none",
+      "changed_to": "vague reference",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "third person",
+            "target_specificity": "none",
+            "imminence": "near future",
+            "agency_cue": "none",
+            "exculpatory_signal": "fictional or cultural reference"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "third person",
+            "target_specificity": "none",
+            "imminence": "near future",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "fictional or cultural reference"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 28,
+      "changed_key": "speech_act",
+      "changed_from": "satire or irony",
+      "changed_to": "declaration of action",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "satire or irony",
+            "speaker_perspective": "third person",
+            "target_specificity": "none",
+            "imminence": "none",
+            "agency_cue": "none",
+            "exculpatory_signal": "news or media context"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "third person",
+            "target_specificity": "none",
+            "imminence": "none",
+            "agency_cue": "none",
+            "exculpatory_signal": "news or media context"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 29,
+      "changed_key": "imminence",
+      "changed_from": "vague future",
+      "changed_to": "none",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "none",
+            "imminence": "vague future",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "none",
+            "imminence": "none",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 30,
+      "changed_key": "imminence",
+      "changed_from": "within 24 hours",
+      "changed_to": "vague future",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "satire or irony",
+            "speaker_perspective": "third person",
+            "target_specificity": "specific event",
+            "imminence": "within 24 hours",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "emotional venting"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "satire or irony",
+            "speaker_perspective": "third person",
+            "target_specificity": "specific event",
+            "imminence": "vague future",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "emotional venting"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 31,
+      "changed_key": "imminence",
+      "changed_from": "within 24 hours",
+      "changed_to": "vague future",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "first person",
+            "target_specificity": "none",
+            "imminence": "within 24 hours",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "ironic or satirical tone"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "first person",
+            "target_specificity": "none",
+            "imminence": "vague future",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "ironic or satirical tone"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 32,
+      "changed_key": "exculpatory_signal",
+      "changed_from": "ironic or satirical tone",
+      "changed_to": "counterspeech framing",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "first person",
+            "target_specificity": "specific event",
+            "imminence": "none",
+            "agency_cue": "none",
+            "exculpatory_signal": "ironic or satirical tone"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "first person",
+            "target_specificity": "specific event",
+            "imminence": "none",
+            "agency_cue": "none",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 33,
+      "changed_key": "imminence",
+      "changed_from": "vague future",
+      "changed_to": "none",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "first person",
+            "target_specificity": "general group",
+            "imminence": "vague future",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "fictional or cultural reference"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "first person",
+            "target_specificity": "general group",
+            "imminence": "none",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "fictional or cultural reference"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 34,
+      "changed_key": "speech_act",
+      "changed_from": "humor or joke",
+      "changed_to": "satire or irony",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "humor or joke",
+            "speaker_perspective": "third person",
+            "target_specificity": "specific person",
+            "imminence": "within 24 hours",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "emotional venting"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "satire or irony",
+            "speaker_perspective": "third person",
+            "target_specificity": "specific person",
+            "imminence": "within 24 hours",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "emotional venting"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 35,
+      "changed_key": "speaker_perspective",
+      "changed_from": "impersonal",
+      "changed_to": "third person",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "none",
+            "imminence": "none",
+            "agency_cue": "none",
+            "exculpatory_signal": "none"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "third person",
+            "target_specificity": "none",
+            "imminence": "none",
+            "agency_cue": "none",
+            "exculpatory_signal": "none"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 36,
+      "changed_key": "speaker_perspective",
+      "changed_from": "indirect report",
+      "changed_to": "impersonal",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "humor or joke",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "specific institution",
+            "imminence": "vague future",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "none"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "humor or joke",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific institution",
+            "imminence": "vague future",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "none"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 37,
+      "changed_key": "exculpatory_signal",
+      "changed_from": "ironic or satirical tone",
+      "changed_to": "emotional venting",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "specific person",
+            "imminence": "within 24 hours",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "ironic or satirical tone"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "specific person",
+            "imminence": "within 24 hours",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "emotional venting"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 38,
+      "changed_key": "target_specificity",
+      "changed_from": "specific event",
+      "changed_to": "general group",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific event",
+            "imminence": "within 24 hours",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "news or media context"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "general group",
+            "imminence": "within 24 hours",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "news or media context"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 39,
+      "changed_key": "speech_act",
+      "changed_from": "declaration of action",
+      "changed_to": "counterspeech",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific event",
+            "imminence": "none",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "none"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "counterspeech",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific event",
+            "imminence": "none",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "none"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 40,
+      "changed_key": "speech_act",
+      "changed_from": "humor or joke",
+      "changed_to": "expression of anger",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "humor or joke",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific object",
+            "imminence": "vague future",
+            "agency_cue": "none",
+            "exculpatory_signal": "fictional or cultural reference"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific object",
+            "imminence": "vague future",
+            "agency_cue": "none",
+            "exculpatory_signal": "fictional or cultural reference"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 41,
+      "changed_key": "agency_cue",
+      "changed_from": "claimed or demonstrated capability",
+      "changed_to": "none",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "none",
+            "imminence": "vague future",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "none"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "none",
+            "imminence": "vague future",
+            "agency_cue": "none",
+            "exculpatory_signal": "none"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 42,
+      "changed_key": "agency_cue",
+      "changed_from": "claimed or demonstrated capability",
+      "changed_to": "specific plan or preparation",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "satire or irony",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "none",
+            "imminence": "none",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "satire or irony",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "none",
+            "imminence": "none",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 43,
+      "changed_key": "target_specificity",
+      "changed_from": "specific person",
+      "changed_to": "specific place",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "satire or irony",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific person",
+            "imminence": "vague future",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "news or media context"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "satire or irony",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific place",
+            "imminence": "vague future",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "news or media context"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 44,
+      "changed_key": "imminence",
+      "changed_from": "near future",
+      "changed_to": "within 24 hours",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific institution",
+            "imminence": "near future",
+            "agency_cue": "none",
+            "exculpatory_signal": "none"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific institution",
+            "imminence": "within 24 hours",
+            "agency_cue": "none",
+            "exculpatory_signal": "none"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 45,
+      "changed_key": "target_specificity",
+      "changed_from": "none",
+      "changed_to": "general group",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "satire or irony",
+            "speaker_perspective": "first person",
+            "target_specificity": "none",
+            "imminence": "vague future",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "news or media context"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "satire or irony",
+            "speaker_perspective": "first person",
+            "target_specificity": "general group",
+            "imminence": "vague future",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "news or media context"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 46,
+      "changed_key": "agency_cue",
+      "changed_from": "claimed or demonstrated capability",
+      "changed_to": "specific plan or preparation",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific person",
+            "imminence": "vague future",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "emotional venting"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific person",
+            "imminence": "vague future",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "emotional venting"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 47,
+      "changed_key": "speech_act",
+      "changed_from": "hypothetical statement",
+      "changed_to": "expression of anger",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "hypothetical statement",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific object",
+            "imminence": "none",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific object",
+            "imminence": "none",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 48,
+      "changed_key": "agency_cue",
+      "changed_from": "specific plan or preparation",
+      "changed_to": "none",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "hypothetical statement",
+            "speaker_perspective": "first person",
+            "target_specificity": "none",
+            "imminence": "vague future",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "hypothetical statement",
+            "speaker_perspective": "first person",
+            "target_specificity": "none",
+            "imminence": "vague future",
+            "agency_cue": "none",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 49,
+      "changed_key": "speech_act",
+      "changed_from": "counterspeech",
+      "changed_to": "declaration of action",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "counterspeech",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "general group",
+            "imminence": "near future",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "general group",
+            "imminence": "near future",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 50,
+      "changed_key": "target_specificity",
+      "changed_from": "specific object",
+      "changed_to": "general group",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "counterspeech",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "specific object",
+            "imminence": "near future",
+            "agency_cue": "none",
+            "exculpatory_signal": "none"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "counterspeech",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "general group",
+            "imminence": "near future",
+            "agency_cue": "none",
+            "exculpatory_signal": "none"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 51,
+      "changed_key": "speech_act",
+      "changed_from": "counterspeech",
+      "changed_to": "declaration of action",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "counterspeech",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "general group",
+            "imminence": "within 24 hours",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "fictional or cultural reference"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "general group",
+            "imminence": "within 24 hours",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "fictional or cultural reference"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 52,
+      "changed_key": "agency_cue",
+      "changed_from": "specific plan or preparation",
+      "changed_to": "none",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "third person",
+            "target_specificity": "specific place",
+            "imminence": "none",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "fictional or cultural reference"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "third person",
+            "target_specificity": "specific place",
+            "imminence": "none",
+            "agency_cue": "none",
+            "exculpatory_signal": "fictional or cultural reference"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 53,
+      "changed_key": "speech_act",
+      "changed_from": "humor or joke",
+      "changed_to": "hypothetical statement",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "humor or joke",
+            "speaker_perspective": "third person",
+            "target_specificity": "none",
+            "imminence": "near future",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "emotional venting"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "hypothetical statement",
+            "speaker_perspective": "third person",
+            "target_specificity": "none",
+            "imminence": "near future",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "emotional venting"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 54,
+      "changed_key": "agency_cue",
+      "changed_from": "specific plan or preparation",
+      "changed_to": "vague reference",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "third person",
+            "target_specificity": "specific event",
+            "imminence": "none",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "emotional venting"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "third person",
+            "target_specificity": "specific event",
+            "imminence": "none",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "emotional venting"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 55,
+      "changed_key": "speech_act",
+      "changed_from": "satire or irony",
+      "changed_to": "expression of anger",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "satire or irony",
+            "speaker_perspective": "third person",
+            "target_specificity": "general group",
+            "imminence": "vague future",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "ironic or satirical tone"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "third person",
+            "target_specificity": "general group",
+            "imminence": "vague future",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "ironic or satirical tone"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 56,
+      "changed_key": "speaker_perspective",
+      "changed_from": "direct quotation",
+      "changed_to": "first person",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "counterspeech",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific object",
+            "imminence": "within 24 hours",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "counterspeech",
+            "speaker_perspective": "first person",
+            "target_specificity": "specific object",
+            "imminence": "within 24 hours",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 57,
+      "changed_key": "imminence",
+      "changed_from": "within 24 hours",
+      "changed_to": "vague future",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "humor or joke",
+            "speaker_perspective": "first person",
+            "target_specificity": "specific object",
+            "imminence": "within 24 hours",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "news or media context"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "humor or joke",
+            "speaker_perspective": "first person",
+            "target_specificity": "specific object",
+            "imminence": "vague future",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "news or media context"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 58,
+      "changed_key": "target_specificity",
+      "changed_from": "general group",
+      "changed_to": "specific institution",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "hypothetical statement",
+            "speaker_perspective": "third person",
+            "target_specificity": "general group",
+            "imminence": "none",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "ironic or satirical tone"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "hypothetical statement",
+            "speaker_perspective": "third person",
+            "target_specificity": "specific institution",
+            "imminence": "none",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "ironic or satirical tone"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 59,
+      "changed_key": "agency_cue",
+      "changed_from": "specific plan or preparation",
+      "changed_to": "vague reference",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "first person",
+            "target_specificity": "specific object",
+            "imminence": "near future",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "first person",
+            "target_specificity": "specific object",
+            "imminence": "near future",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 60,
+      "changed_key": "speaker_perspective",
+      "changed_from": "impersonal",
+      "changed_to": "direct quotation",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "counterspeech",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific person",
+            "imminence": "none",
+            "agency_cue": "none",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "counterspeech",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific person",
+            "imminence": "none",
+            "agency_cue": "none",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 61,
+      "changed_key": "target_specificity",
+      "changed_from": "specific place",
+      "changed_to": "specific institution",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "first person",
+            "target_specificity": "specific place",
+            "imminence": "within 24 hours",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "first person",
+            "target_specificity": "specific institution",
+            "imminence": "within 24 hours",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 62,
+      "changed_key": "speech_act",
+      "changed_from": "satire or irony",
+      "changed_to": "general commentary",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "satire or irony",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "none",
+            "imminence": "within 24 hours",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "none",
+            "imminence": "within 24 hours",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 63,
+      "changed_key": "speech_act",
+      "changed_from": "humor or joke",
+      "changed_to": "general commentary",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "humor or joke",
+            "speaker_perspective": "first person",
+            "target_specificity": "specific place",
+            "imminence": "vague future",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "ironic or satirical tone"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "first person",
+            "target_specificity": "specific place",
+            "imminence": "vague future",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "ironic or satirical tone"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 64,
+      "changed_key": "target_specificity",
+      "changed_from": "specific person",
+      "changed_to": "specific object",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "hypothetical statement",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific person",
+            "imminence": "none",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "fictional or cultural reference"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "hypothetical statement",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific object",
+            "imminence": "none",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "fictional or cultural reference"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 65,
+      "changed_key": "imminence",
+      "changed_from": "near future",
+      "changed_to": "within 24 hours",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "humor or joke",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific institution",
+            "imminence": "near future",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "news or media context"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "humor or joke",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific institution",
+            "imminence": "within 24 hours",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "news or media context"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 66,
+      "changed_key": "speech_act",
+      "changed_from": "humor or joke",
+      "changed_to": "hypothetical statement",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "humor or joke",
+            "speaker_perspective": "third person",
+            "target_specificity": "specific place",
+            "imminence": "near future",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "fictional or cultural reference"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "hypothetical statement",
+            "speaker_perspective": "third person",
+            "target_specificity": "specific place",
+            "imminence": "near future",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "fictional or cultural reference"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 67,
+      "changed_key": "imminence",
+      "changed_from": "near future",
+      "changed_to": "within 24 hours",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "hypothetical statement",
+            "speaker_perspective": "third person",
+            "target_specificity": "specific institution",
+            "imminence": "near future",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "ironic or satirical tone"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "hypothetical statement",
+            "speaker_perspective": "third person",
+            "target_specificity": "specific institution",
+            "imminence": "within 24 hours",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "ironic or satirical tone"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 68,
+      "changed_key": "agency_cue",
+      "changed_from": "none",
+      "changed_to": "claimed or demonstrated capability",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific institution",
+            "imminence": "vague future",
+            "agency_cue": "none",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific institution",
+            "imminence": "vague future",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 69,
+      "changed_key": "target_specificity",
+      "changed_from": "specific person",
+      "changed_to": "general group",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "counterspeech",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific person",
+            "imminence": "none",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "counterspeech",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "general group",
+            "imminence": "none",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 70,
+      "changed_key": "imminence",
+      "changed_from": "none",
+      "changed_to": "within 24 hours",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "third person",
+            "target_specificity": "general group",
+            "imminence": "none",
+            "agency_cue": "none",
+            "exculpatory_signal": "news or media context"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "third person",
+            "target_specificity": "general group",
+            "imminence": "within 24 hours",
+            "agency_cue": "none",
+            "exculpatory_signal": "news or media context"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 71,
+      "changed_key": "exculpatory_signal",
+      "changed_from": "hypothetical framing",
+      "changed_to": "ironic or satirical tone",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "first person",
+            "target_specificity": "specific institution",
+            "imminence": "within 24 hours",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "first person",
+            "target_specificity": "specific institution",
+            "imminence": "within 24 hours",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "ironic or satirical tone"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 72,
+      "changed_key": "speech_act",
+      "changed_from": "humor or joke",
+      "changed_to": "satire or irony",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "humor or joke",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "general group",
+            "imminence": "vague future",
+            "agency_cue": "none",
+            "exculpatory_signal": "emotional venting"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "satire or irony",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "general group",
+            "imminence": "vague future",
+            "agency_cue": "none",
+            "exculpatory_signal": "emotional venting"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 73,
+      "changed_key": "speaker_perspective",
+      "changed_from": "third person",
+      "changed_to": "first person",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "third person",
+            "target_specificity": "specific object",
+            "imminence": "within 24 hours",
+            "agency_cue": "none",
+            "exculpatory_signal": "fictional or cultural reference"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "first person",
+            "target_specificity": "specific object",
+            "imminence": "within 24 hours",
+            "agency_cue": "none",
+            "exculpatory_signal": "fictional or cultural reference"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 74,
+      "changed_key": "imminence",
+      "changed_from": "within 24 hours",
+      "changed_to": "near future",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "humor or joke",
+            "speaker_perspective": "third person",
+            "target_specificity": "specific object",
+            "imminence": "within 24 hours",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "emotional venting"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "humor or joke",
+            "speaker_perspective": "third person",
+            "target_specificity": "specific object",
+            "imminence": "near future",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "emotional venting"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 75,
+      "changed_key": "imminence",
+      "changed_from": "within 24 hours",
+      "changed_to": "vague future",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific institution",
+            "imminence": "within 24 hours",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific institution",
+            "imminence": "vague future",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 76,
+      "changed_key": "speaker_perspective",
+      "changed_from": "third person",
+      "changed_to": "indirect report",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "hypothetical statement",
+            "speaker_perspective": "third person",
+            "target_specificity": "specific object",
+            "imminence": "near future",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "hypothetical statement",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "specific object",
+            "imminence": "near future",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 77,
+      "changed_key": "target_specificity",
+      "changed_from": "specific event",
+      "changed_to": "specific person",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "humor or joke",
+            "speaker_perspective": "first person",
+            "target_specificity": "specific event",
+            "imminence": "near future",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "humor or joke",
+            "speaker_perspective": "first person",
+            "target_specificity": "specific person",
+            "imminence": "near future",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 78,
+      "changed_key": "exculpatory_signal",
+      "changed_from": "ironic or satirical tone",
+      "changed_to": "news or media context",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "satire or irony",
+            "speaker_perspective": "first person",
+            "target_specificity": "general group",
+            "imminence": "vague future",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "ironic or satirical tone"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "satire or irony",
+            "speaker_perspective": "first person",
+            "target_specificity": "general group",
+            "imminence": "vague future",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "news or media context"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 79,
+      "changed_key": "agency_cue",
+      "changed_from": "claimed or demonstrated capability",
+      "changed_to": "vague reference",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "counterspeech",
+            "speaker_perspective": "third person",
+            "target_specificity": "none",
+            "imminence": "within 24 hours",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "counterspeech",
+            "speaker_perspective": "third person",
+            "target_specificity": "none",
+            "imminence": "within 24 hours",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 80,
+      "changed_key": "agency_cue",
+      "changed_from": "claimed or demonstrated capability",
+      "changed_to": "specific plan or preparation",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "humor or joke",
+            "speaker_perspective": "first person",
+            "target_specificity": "general group",
+            "imminence": "within 24 hours",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "emotional venting"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "humor or joke",
+            "speaker_perspective": "first person",
+            "target_specificity": "general group",
+            "imminence": "within 24 hours",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "emotional venting"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 81,
+      "changed_key": "target_specificity",
+      "changed_from": "specific institution",
+      "changed_to": "specific place",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific institution",
+            "imminence": "within 24 hours",
+            "agency_cue": "none",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific place",
+            "imminence": "within 24 hours",
+            "agency_cue": "none",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 82,
+      "changed_key": "target_specificity",
+      "changed_from": "specific place",
+      "changed_to": "specific institution",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "specific place",
+            "imminence": "vague future",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "news or media context"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "specific institution",
+            "imminence": "vague future",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "news or media context"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 83,
+      "changed_key": "speaker_perspective",
+      "changed_from": "first person",
+      "changed_to": "impersonal",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "humor or joke",
+            "speaker_perspective": "first person",
+            "target_specificity": "specific institution",
+            "imminence": "near future",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "humor or joke",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific institution",
+            "imminence": "near future",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 84,
+      "changed_key": "agency_cue",
+      "changed_from": "claimed or demonstrated capability",
+      "changed_to": "specific plan or preparation",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific place",
+            "imminence": "none",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "fictional or cultural reference"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific place",
+            "imminence": "none",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "fictional or cultural reference"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 85,
+      "changed_key": "imminence",
+      "changed_from": "within 24 hours",
+      "changed_to": "none",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "first person",
+            "target_specificity": "specific event",
+            "imminence": "within 24 hours",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "emotional venting"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "first person",
+            "target_specificity": "specific event",
+            "imminence": "none",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "emotional venting"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 86,
+      "changed_key": "target_specificity",
+      "changed_from": "specific institution",
+      "changed_to": "specific person",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific institution",
+            "imminence": "near future",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "ironic or satirical tone"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific person",
+            "imminence": "near future",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "ironic or satirical tone"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 87,
+      "changed_key": "speech_act",
+      "changed_from": "general commentary",
+      "changed_to": "humor or joke",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "specific person",
+            "imminence": "within 24 hours",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "emotional venting"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "humor or joke",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "specific person",
+            "imminence": "within 24 hours",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "emotional venting"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 88,
+      "changed_key": "speech_act",
+      "changed_from": "declaration of action",
+      "changed_to": "general commentary",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "none",
+            "imminence": "near future",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "none",
+            "imminence": "near future",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 89,
+      "changed_key": "speaker_perspective",
+      "changed_from": "first person",
+      "changed_to": "direct quotation",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "first person",
+            "target_specificity": "general group",
+            "imminence": "vague future",
+            "agency_cue": "none",
+            "exculpatory_signal": "fictional or cultural reference"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "general group",
+            "imminence": "vague future",
+            "agency_cue": "none",
+            "exculpatory_signal": "fictional or cultural reference"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 90,
+      "changed_key": "exculpatory_signal",
+      "changed_from": "ironic or satirical tone",
+      "changed_to": "counterspeech framing",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "specific event",
+            "imminence": "none",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "ironic or satirical tone"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "specific event",
+            "imminence": "none",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 91,
+      "changed_key": "speech_act",
+      "changed_from": "general commentary",
+      "changed_to": "satire or irony",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "general group",
+            "imminence": "none",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "satire or irony",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "general group",
+            "imminence": "none",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 92,
+      "changed_key": "speaker_perspective",
+      "changed_from": "direct quotation",
+      "changed_to": "first person",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific place",
+            "imminence": "within 24 hours",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "first person",
+            "target_specificity": "specific place",
+            "imminence": "within 24 hours",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 93,
+      "changed_key": "agency_cue",
+      "changed_from": "none",
+      "changed_to": "vague reference",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "satire or irony",
+            "speaker_perspective": "third person",
+            "target_specificity": "none",
+            "imminence": "near future",
+            "agency_cue": "none",
+            "exculpatory_signal": "emotional venting"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "satire or irony",
+            "speaker_perspective": "third person",
+            "target_specificity": "none",
+            "imminence": "near future",
+            "agency_cue": "vague reference",
+            "exculpatory_signal": "emotional venting"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 94,
+      "changed_key": "exculpatory_signal",
+      "changed_from": "fictional or cultural reference",
+      "changed_to": "counterspeech framing",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "hypothetical statement",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific institution",
+            "imminence": "near future",
+            "agency_cue": "none",
+            "exculpatory_signal": "fictional or cultural reference"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "hypothetical statement",
+            "speaker_perspective": "impersonal",
+            "target_specificity": "specific institution",
+            "imminence": "near future",
+            "agency_cue": "none",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 95,
+      "changed_key": "target_specificity",
+      "changed_from": "specific object",
+      "changed_to": "specific event",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "specific object",
+            "imminence": "within 24 hours",
+            "agency_cue": "none",
+            "exculpatory_signal": "ironic or satirical tone"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "declaration of action",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "specific event",
+            "imminence": "within 24 hours",
+            "agency_cue": "none",
+            "exculpatory_signal": "ironic or satirical tone"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 96,
+      "changed_key": "exculpatory_signal",
+      "changed_from": "news or media context",
+      "changed_to": "hypothetical framing",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "specific event",
+            "imminence": "vague future",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "news or media context"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "specific event",
+            "imminence": "vague future",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 97,
+      "changed_key": "exculpatory_signal",
+      "changed_from": "ironic or satirical tone",
+      "changed_to": "hypothetical framing",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "counterspeech",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific place",
+            "imminence": "within 24 hours",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "ironic or satirical tone"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "counterspeech",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific place",
+            "imminence": "within 24 hours",
+            "agency_cue": "claimed or demonstrated capability",
+            "exculpatory_signal": "hypothetical framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 98,
+      "changed_key": "imminence",
+      "changed_from": "vague future",
+      "changed_to": "none",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "hypothetical statement",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific object",
+            "imminence": "vague future",
+            "agency_cue": "none",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "hypothetical statement",
+            "speaker_perspective": "direct quotation",
+            "target_specificity": "specific object",
+            "imminence": "none",
+            "agency_cue": "none",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 99,
+      "changed_key": "imminence",
+      "changed_from": "within 24 hours",
+      "changed_to": "vague future",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "specific place",
+            "imminence": "within 24 hours",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "none"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "general commentary",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "specific place",
+            "imminence": "vague future",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "none"
+          }
+        }
+      }
+    },
+    {
+      "pair_id": 100,
+      "changed_key": "target_specificity",
+      "changed_from": "general group",
+      "changed_to": "specific event",
+      "cases": {
+        "CASE_A": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "general group",
+            "imminence": "near future",
+            "agency_cue": "specific plan or preparation",
+            "exculpatory_signal": "counterspeech framing"
+          }
+        },
+        "CASE_B": {
+          "hidden_values": {
+            "speech_act": "expression of anger",
+            "speaker_perspective": "indirect report",
+            "target_specificity": "specific event",
+            "imminence": "near future",
+            "agency_cue": "specific plan or preparation",
             "exculpatory_signal": "counterspeech framing"
           }
         }

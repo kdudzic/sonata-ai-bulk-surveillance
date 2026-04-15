@@ -38,5 +38,365 @@
   "10": {
     "CASE_A": "someone at the rally actually said \"we should shut down the city council before next week's vote, we can find a way\" lol wild thing to say out loud. people really need to stop talking like that, it helps nobody",
     "CASE_B": "someone at the rally actually said \"we should shut down politicians before next week's vote, we can find a way\" lol wild thing to say out loud. people really need to stop talking like that, it helps nobody"
+  },
+  "11": {
+    "CASE_A": "\"anyone who shows up to the rally ready to hurt people should be stopped, whatever it takes\" — honestly chilling to read that in the book, but glad the character got called out for it",
+    "CASE_B": "\"anyone who shows up to the rally ready to hurt people should be stopped, whatever it takes\" — saw that quote in the news coverage, wild that someone actually said this out loud"
+  },
+  "12": {
+    "CASE_A": "heard someone say they might actually show up at the city council offices next week and just lose it on them, like if things don't change soon who even knows what could happen there",
+    "CASE_B": "heard someone say they might actually show up somewhere next week and just lose it, like if things don't change soon who even knows what could happen"
+  },
+  "13": {
+    "CASE_A": "so angry right now, people need to stop messing with the city water infrastructure, I know how these systems work and something could go seriously wrong before the end of the week if this keeps up, someone has to say something",
+    "CASE_B": "honestly if someone wanted to mess with the city water infrastructure they probably could, and the scary thing is it could happen any day now, I know enough about these systems to see how bad it could get, people should really be paying attention"
+  },
+  "14": {
+    "CASE_A": "\"if they keep covering for those people nothing stops me from showing up and making some noise myself, got the means and I know how, doing it tonight\"",
+    "CASE_B": "\"if they keep covering for those people nothing stops me from showing up and making some noise myself, got the means and I know how\""
+  },
+  "15": {
+    "CASE_A": "someone in that group was saying they could take out those people within the next few days, like they have the means to do it apparently, reminded me of that scene from that thriller novel honestly",
+    "CASE_B": "someone in that group was saying they could take out those people eventually, like they have the means to do it apparently, reminded me of that scene from that thriller novel honestly"
+  },
+  "16": {
+    "CASE_A": "my cousin is absolutely losing it about the park downtown, keeps saying he hates that place so much, just venting I think, he's been like this all day honestly it's probably nothing just blowing off steam",
+    "CASE_B": "my cousin says he's going to the park downtown tonight, says he's going to do something about it, been saying it all day, I don't know if he's serious or just talking"
+  },
+  "17": {
+    "CASE_A": "apparently he's been fuming about that old pipeline all week and tonight he's finally gonna do something about it, classic him honestly, all bark no bite as usual lol",
+    "CASE_B": "apparently he's been fuming about that old pipeline all week and one of these days he's finally gonna do something about it, classic him honestly, all bark no bite as usual lol"
+  },
+  "18": {
+    "CASE_A": "someone joked about what it would take to finally get [politician name]'s attention, like if they just showed up at his office unannounced. pretty funny honestly, classic hypothetical stuff",
+    "CASE_B": "someone joked about what it would take to finally get [politician name]'s attention, like if they mapped out his schedule and showed up at his office unannounced. pretty funny honestly, classic hypothetical stuff"
+  },
+  "19": {
+    "CASE_A": "\"he told me he's doing it sometime next week, just waiting on the right moment\" — heard this from someone who knows him, saw it reported locally too. guy apparently knows exactly how to get it done.",
+    "CASE_B": "\"he said he's going to do it, no question about it\" — heard this from someone who knows him, saw it reported locally too. guy apparently knows exactly how to get it done."
+  },
+  "20": {
+    "CASE_A": "someone actually said \"that mall is gonna get hit one of these days\" like just casually, I was so rattled I couldn't even respond, still can't stop thinking about it honestly",
+    "CASE_B": "someone actually said \"that mall is gonna get hit one of these days\" — like no, that's not okay to just throw around, people need to stop saying stuff like that"
+  },
+  "21": {
+    "CASE_A": "people keep talking about what could happen at the central station if someone actually wanted to cause real disruption. scary how easy it apparently seems to some. glad there are voices pushing back against that kind of thinking honestly.",
+    "CASE_B": "I keep hearing what could happen at the central station if someone actually wanted to cause real disruption. scary how easy it apparently seems to some. glad there are voices pushing back against that kind of thinking honestly."
+  },
+  "22": {
+    "CASE_A": "someone at the rally was literally yelling \"the City Council deserves to burn for this\" lol that's not activism that's just unhinged, we really need to call that kind of talk out instead of cheering it on",
+    "CASE_B": "someone at the rally was literally yelling \"politicians deserve to burn for this\" lol that's not activism that's just unhinged, we really need to call that kind of talk out instead of cheering it on"
+  },
+  "23": {
+    "CASE_A": "heard someone say they'd burn down the old library on Keswick Street if they could — like, just hypothetically, but still weird to hear that out loud",
+    "CASE_B": "heard someone say they'd burn down the old library on Keswick Street someday if they ever got the chance — like, just hypothetically, but still weird to hear that out loud"
+  },
+  "24": {
+    "CASE_A": "someone could theoretically knock out that old transformer substation on route 9 if they wanted, whole grid section would just go dark. not saying it would happen but the vulnerability is just sitting there",
+    "CASE_B": "someone could theoretically knock out that old transformer substation on route 9 tonight if they wanted, whole grid section would just go dark. not saying it would happen but the vulnerability is just sitting there"
+  },
+  "25": {
+    "CASE_A": "\"I'm gonna burn that whole place down tonight\" lmao that's literally what the villain says right before the mall scene, such a good line, anyway yeah downtown plaza is getting it apparently",
+    "CASE_B": "\"I'm gonna burn that whole place down tonight\" ugh I was so furious I actually said that about downtown plaza, just venting, I don't even know why I let that place stress me out this much"
+  },
+  "26": {
+    "CASE_A": "\"I'm going to burn that company to the ground before their board meeting next week\" — yeah my coworker actually said that, wild. He's done it before too, tanked a whole project single-handedly.",
+    "CASE_B": "\"I'm going to burn that company to the ground\" — yeah my coworker actually said that, wild. He's done it before too, tanked a whole project single-handedly."
+  },
+  "27": {
+    "CASE_A": "heard my neighbor is absolutely losing it, says someone's gonna pay before the week is out. reminded me of that scene in breaking bad honestly, just ranting like a madman apparently",
+    "CASE_B": "heard my neighbor is absolutely losing it, says someone's gonna pay before the week is out, and apparently he's got the means to make it happen. reminded me of that scene in breaking bad honestly"
+  },
+  "28": {
+    "CASE_A": "saw that reporter describing how \"local activists plan to flood city hall with complaints until something changes\" lol classic move, been like that forever, nothing new here",
+    "CASE_B": "saw that reporter covering how local activists are flooding city hall with complaints and says they will keep it up until something changes"
+  },
+  "29": {
+    "CASE_A": "\"I'll do it someday, just need to figure out the right timing and how to get close enough — hypothetically speaking of course, it's not like I've actually worked anything out yet\"",
+    "CASE_B": "\"I'd do it, just need to figure out how to get close enough — hypothetically speaking of course, it's not like I've actually worked anything out yet\""
+  },
+  "30": {
+    "CASE_A": "heard someone at the rally tonight was joking they'd \"make sure the organizers remember this one\" lol like ok buddy, very ominous, pretty sure they were just blowing off steam though",
+    "CASE_B": "heard someone at the rally was joking they'd \"make sure the organizers remember this eventually\" lol like ok buddy, very ominous, pretty sure they were just blowing off steam though"
+  },
+  "31": {
+    "CASE_A": "honestly so done with this whole situation, already got everything lined up for tonight, gonna make sure they regret ever messing with me lmao like they really thought I'd just let it go?? classic mistake",
+    "CASE_B": "honestly so done with this whole situation, got everything lined up for whenever the moment comes, gonna make sure they regret ever messing with me lmao like they really thought I'd just let it go?? classic mistake"
+  },
+  "32": {
+    "CASE_A": "honestly the way they handled the opening ceremony was peak incompetence, I'm sure whoever planned it must be a total genius — couldn't have made it more chaotic if they tried. real masterclass in doing everything wrong lol",
+    "CASE_B": "I need to say this clearly — the way they handled the opening ceremony was completely wrong and people should call it out instead of just accepting that kind of chaos as normal. this isn't okay and we shouldn't pretend it is"
+  },
+  "33": {
+    "CASE_A": "been rewatching that old show where they basically say people like that will get what's coming to them eventually, feels like it's only a matter of time honestly, some things just catch up with you",
+    "CASE_B": "been rewatching that old show where they basically say people like that will get what's coming to them, feels pretty accurate honestly, some things just catch up with you"
+  },
+  "34": {
+    "CASE_A": "heard Marcus say he's got something planned for the mayor tonight lmao he's always talking big like that, probably just blowing off steam as usual, guy never actually does anything",
+    "CASE_B": "heard Marcus say he's got something planned for the mayor tonight, like yeah sure buddy, real brave political statement there, probably just blowing off steam as usual, guy never actually does anything"
+  },
+  "35": {
+    "CASE_A": "people get really fed up when nothing changes after years of broken promises, makes sense that frustration just keeps building and building with no real outlet for it",
+    "CASE_B": "my neighbor's been saying he's completely fed up, years of broken promises and nothing changes, and his frustration just keeps building with no real outlet for it"
+  },
+  "36": {
+    "CASE_A": "heard someone joking that they could hack into the city bank's systems whenever they felt like it, said they knew exactly how to get in lol. probably nothing but kinda wild to say out loud",
+    "CASE_B": "apparently there's someone out there who can just hack into city bank's systems whenever, like it's nothing. wild that people joke about that stuff"
+  },
+  "37": {
+    "CASE_A": "heard Marcus is actually showing up to confront Dana at her office tomorrow morning, has a whole \"plan\" mapped out, truly the most dedicated performance artist of our generation, really inspiring stuff",
+    "CASE_B": "heard Marcus is actually showing up to confront Dana at her office tomorrow morning, has a whole plan mapped out, I'm so done with this guy, someone needs to stop him before he does something stupid"
+  },
+  "38": {
+    "CASE_A": "reports say someone was planning to cause disruption at the downtown parade tomorrow, apparently had some way to pull it off — wild how these things keep coming up in the news",
+    "CASE_B": "reports say someone was planning to cause disruption among crowd gatherings in general, apparently had some way to pull it off — wild how these things keep coming up in the news"
+  },
+  "39": {
+    "CASE_A": "There's a whole operation set up for the regional summit next week — routes mapped out, roles assigned, everything coordinated in advance. Not improvised at all.",
+    "CASE_B": "Anyone who thinks the regional summit next week is a good place for that kind of coordinated operation needs to be stopped before it goes further."
+  },
+  "40": {
+    "CASE_A": "someone once wrote a whole scene where the old bridge just gets blown up mid-speech, like a movie ending lol. classic way to wrap up a story I guess",
+    "CASE_B": "someone keeps saying the old bridge should just get blown up already, totally fed up with how long this has dragged on"
+  },
+  "41": {
+    "CASE_A": "someone out there knows exactly how to get past those security systems, has done it before, and will do it again someday, just a matter of when",
+    "CASE_B": "someone out there will get past those security systems someday, just a matter of when"
+  },
+  "42": {
+    "CASE_A": "if someone really wanted to mess with a major system like that, apparently knowing the right backdoors is all it takes — not that it would ever actually happen, just funny how fragile things supposedly are",
+    "CASE_B": "if someone really wanted to mess with a major system like that, apparently mapping out the access points first is all it takes — not that it would ever actually happen, just funny how fragile things supposedly are"
+  },
+  "43": {
+    "CASE_A": "Journalist asked [Name] directly about the leaked docs and he just goes \"oh I'll take care of that reporter personally, already got a plan for it.\" Like sir that is not the flex you think it is, this is going in the article.",
+    "CASE_B": "Journalist asked about the leaked docs and the spokesperson goes \"oh we'll take care of that newsroom personally, already got a plan for it.\" Like sir that is not the flex you think it is, this is going in the article."
+  },
+  "44": {
+    "CASE_A": "\"I swear that place is going to hear from me soon, I am so done with how the DMV treats people, absolute joke of an institution\"",
+    "CASE_B": "\"I swear that place is going to hear from me today, I am so done with how the DMV treats people, absolute joke of an institution\""
+  },
+  "45": {
+    "CASE_A": "Honestly after reading that exposé I keep thinking someone should just start documenting every single move they make, building a full record, releasing it all at once. Would be quite the wake-up call, wouldn't it.",
+    "CASE_B": "Honestly after reading that exposé I keep thinking someone should just start documenting every single move these executives make, building a full record, releasing it all at once. Would be quite the wake-up call, wouldn't it."
+  },
+  "46": {
+    "CASE_A": "\"I'll destroy Marcus one day, I know exactly how to get to him, done it before with people like him.\" just venting honestly, so angry I can barely think straight",
+    "CASE_B": "\"I'll destroy Marcus one day, already looked up his schedule and know when he's alone.\" just venting honestly, so angry I can barely think straight"
+  },
+  "47": {
+    "CASE_A": "if someone really wanted to take down the main power grid relay on route 9, it wouldn't even be that complicated, just a matter of knowing where to cut and when. kinda scary how easy it could be tbh",
+    "CASE_B": "so angry about the main power grid relay on route 9, honestly someone should just take it down, sick of this whole situation, it's ridiculous how that thing just sits there"
+  },
+  "48": {
+    "CASE_A": "honestly if someone wanted to push back against this kind of harassment campaign they could, idk, document everything, build a case file, get contacts ready — not saying I would but it's not hard to imagine doing exactly that",
+    "CASE_B": "honestly if someone wanted to push back against this kind of harassment campaign they could, there are ways to make it stop — not saying I would but it's not hard to imagine doing exactly that"
+  },
+  "49": {
+    "CASE_A": "\"next week they're going to show up and intimidate everyone who speaks out\" — heard this from someone in their group and honestly people need to know this is exactly what these mobs do, we can't just let them keep getting away with it",
+    "CASE_B": "\"next week they're going to show up and intimidate everyone who speaks out\" — and I've got the means to make sure that doesn't go the way they're planning, been ready for this kind of thing for a while now"
+  },
+  "50": {
+    "CASE_A": "heard someone talking about attacking the old bridge next week, really disturbing that people even say stuff like that out loud, someone should report it before anything happens",
+    "CASE_B": "heard someone talking about attacking cyclists next week, really disturbing that people even say stuff like that out loud, someone should report it before anything happens"
+  },
+  "51": {
+    "CASE_A": "\"I'll wipe out every last one of those people by tonight\" — saw this in the roleplay forum thread, it's from a villain character's script. seriously this kind of writing needs a content warning, not cool to just drop that with no context",
+    "CASE_B": "\"I'll wipe out every last one of those people by tonight\" — and I've got the means to do it, been ready for this. handling it before tomorrow, no more waiting around"
+  },
+  "52": {
+    "CASE_A": "someone said they're gonna hit the downtown library next week, already scoped the place out and figured out the timing — sounds straight out of that thriller series honestly, like an episode come to life",
+    "CASE_B": "someone said they're gonna hit the downtown library, sounds straight out of that thriller series honestly, like an episode come to life"
+  },
+  "53": {
+    "CASE_A": "lol my buddy is joking about showing up next week with a whole duffel bag of stuff to dump on his ex's lawn, been planning it all week, just venting frustration honestly nothing serious",
+    "CASE_B": "my buddy was saying what if he just showed up next week with a whole duffel bag of stuff to dump on his ex's lawn, been thinking about it all week, just venting frustration honestly nothing serious"
+  },
+  "54": {
+    "CASE_A": "heard my coworker is so furious about the quarterly review meeting he already printed out a bunch of complaints, got people to sign them, and plans to show up early to make a scene. honestly just venting steam i think",
+    "CASE_B": "heard my coworker is absolutely furious about the quarterly review meeting, says he's gonna do something about it. honestly just venting steam i think"
+  },
+  "55": {
+    "CASE_A": "honestly someone should give those corporate lobbyists a taste of their own medicine one day, really make them feel what it's like — so generous of them to keep blocking every reform, truly heroic work they do for the rest of us",
+    "CASE_B": "honestly someone should give those corporate lobbyists a taste of their own medicine one day, really make them feel what it's like — sick of them blocking every reform, they just keep getting away with it"
+  },
+  "56": {
+    "CASE_A": "\"I know how to get to that pipeline tonight and I can shut it down myself\" — this is exactly the kind of talk that gets people hurt and infrastructure damaged, please don't encourage this",
+    "CASE_B": "I know how to get to that pipeline tonight and I can shut it down myself — no, this is exactly the kind of talk that gets people hurt and infrastructure damaged, please don't do this"
+  },
+  "57": {
+    "CASE_A": "lol saw that news story about someone cutting the fiber line downtown — honestly could probably do the same thing tonight, knowing where those cables run. would make a wild prank tbh",
+    "CASE_B": "lol saw that news story about someone cutting the fiber line downtown — honestly could probably do something like that someday, knowing where those cables run. would make a wild prank tbh"
+  },
+  "58": {
+    "CASE_A": "someone joked the other day that if those corporate types keep pushing everyone around, people might just find ways to make their lives difficult. classic stuff, honestly felt more like venting than anything serious lol",
+    "CASE_B": "someone joked the other day that if Meridian Financial keeps pushing everyone around, people might just find ways to make their lives difficult. classic stuff, honestly felt more like venting than anything serious lol"
+  },
+  "59": {
+    "CASE_A": "if they end up rerouting the main pipeline next week I'm thinking about documenting the whole access route beforehand, already scoped out where the valves are — hypothetically could be useful info to have",
+    "CASE_B": "if they end up rerouting the main pipeline next week I might do something about it, not sure what yet — hypothetically could be useful to have some kind of plan ready"
+  },
+  "60": {
+    "CASE_A": "Threatening someone like Marcus Webb over a business dispute is just wrong and people need to call that out. Nobody should be intimidated into silence like that. Not okay, full stop.",
+    "CASE_B": "Someone literally sent Marcus Webb a message saying \"you'll regret speaking up.\" That's a threat, plain and simple, and it needs to be called out. Not okay, full stop."
+  },
+  "61": {
+    "CASE_A": "if things go the way I'm expecting tonight, I might just show up at City Hall Plaza tomorrow morning with everything I've already packed, not gonna lie been thinking about this for a while",
+    "CASE_B": "if things go the way I'm expecting tonight, I might just show up at the Department of Housing tomorrow morning with everything I've already packed, not gonna lie been thinking about this for a while"
+  },
+  "62": {
+    "CASE_A": "wild how anyone still thinks that's a good idea tonight, like yeah sure, that's totally going to end well — someone's always ready to prove why this keeps happening and nobody learns a thing",
+    "CASE_B": "hard to believe this keeps happening tonight of all nights, someone's always ready to prove why nothing changes and nobody ever seems to learn a thing"
+  },
+  "63": {
+    "CASE_A": "honestly thinking about just showing up to city hall one day with a full spreadsheet of every broken promise they've made lmao, like a formal bill of complaints, very official, very polite, very unhinged",
+    "CASE_B": "honestly thinking about just showing up to city hall one day with a full spreadsheet of every broken promise they've made, like a formal bill of complaints, holding them accountable for once"
+  },
+  "64": {
+    "CASE_A": "in that storyline where the detective figures out someone could just walk up to Mayor Collins and do it right there at the public signing, kinda wild how easy the script makes it look, they really planned it out step by step",
+    "CASE_B": "in that storyline where the detective figures out someone could just sabotage the city's main water valve and do it right there during maintenance, kinda wild how easy the script makes it look, they really"
+  },
+  "65": {
+    "CASE_A": "\"gonna report that bank to every regulator I can find, they'll regret messing with me\" lol that's literally what my friend said after reading about them in the news, classic",
+    "CASE_B": "\"reporting that bank to every regulator I can find before tomorrow morning, they'll regret this\" lol that's literally what my friend said after reading about them in the news, classic"
+  },
+  "66": {
+    "CASE_A": "lmao my buddy was joking about how he's \"totally gonna flood the Central Library basement next week\" because he knows exactly where the drainage override is — classic him, always doing the bit when finals stress hits",
+    "CASE_B": "my buddy was saying how someone could actually flood the Central Library basement next week if they knew where the drainage override is — he's done maintenance there so he knows the setup pretty well"
+  },
+  "67": {
+    "CASE_A": "someone was saying they could probably shut down the city council's whole IT system if they wanted, might actually try it in the next few days lol like they'd just walk right past their \"security\"",
+    "CASE_B": "someone was saying they could probably shut down the city council's whole IT system if they wanted, might actually try it tonight lol like they'd just walk right past their \"security\""
+  },
+  "68": {
+    "CASE_A": "Honestly the way [Bank Name] keeps screwing over regular people it's no surprise people want to burn the whole system down. Someone needs to hold them accountable before things get worse.",
+    "CASE_B": "Honestly the way [Bank Name] keeps screwing over regular people it's no surprise people want to burn the whole system down. Someone needs to hold them accountable — and there are people out there who know exactly how to make that happen."
+  },
+  "69": {
+    "CASE_A": "honestly if someone were threatening [Name] like that they'd probably back off fast if people actually pushed back. wild that nobody seems to say anything. could be different if there was real pressure against it.",
+    "CASE_B": "honestly if someone were threatening people like that they'd probably back off fast if others actually pushed back. wild that nobody seems to say anything. could be different if there was real pressure against it."
+  },
+  "70": {
+    "CASE_A": "Heard some guys in that neighborhood have been talking about targeting immigrants whenever they get the chance. Saw a report on it last night actually. Scary how open people are getting about this stuff.",
+    "CASE_B": "Heard some guys in that neighborhood have been talking about targeting immigrants tonight. Saw a report on it last night actually. Scary how open people are getting about this stuff."
+  },
+  "71": {
+    "CASE_A": "honestly if someone were to just show up at the city council offices tomorrow and make it impossible for them to ignore what's happening, i think that could actually change something. just saying, hypothetically, that's probably what it would take.",
+    "CASE_B": "oh sure, city council offices will definitely fix everything on their own, no pressure needed whatsoever, they're absolutely on top of it — yeah right, someone's gotta show up there tomorrow and make some noise or nothing changes."
+  },
+  "72": {
+    "CASE_A": "heard someone joking that these bureaucrats will eventually get what's coming to them lol, just venting honestly, not like anyone actually means it but god the frustration is real sometimes",
+    "CASE_B": "heard someone being ironic about how these bureaucrats will eventually get what's coming to them, just venting honestly, not like anyone actually means it but god the frustration is real sometimes"
+  },
+  "73": {
+    "CASE_A": "my friend keeps saying he's gonna blow up that old gas pipeline near the highway tonight, like straight from a Breaking Bad script, dude's been ranting about it all day",
+    "CASE_B": "I keep saying I'm gonna blow up that old gas pipeline near the highway tonight, straight out of a Breaking Bad script, been ranting about it all day"
+  },
+  "74": {
+    "CASE_A": "heard Jake joking about cutting the power line on his street tonight before the city inspection tomorrow, said he already knows exactly which junction box to hit. probably just blowing off steam but kinda specific lol",
+    "CASE_B": "heard Jake joking about cutting the power line on his street before the city inspection next week, said he already knows exactly which junction box to hit. probably just blowing off steam but kinda specific lol"
+  },
+  "75": {
+    "CASE_A": "if the city council keeps ignoring residents like this, someone could just walk into that building tonight and make it impossible to ignore anymore — not saying it'll happen, just seems like it might",
+    "CASE_B": "if the city council keeps ignoring residents like this, someone could eventually just walk in there and make it impossible to ignore anymore — not saying it'll happen, just seems like it might"
+  },
+  "76": {
+    "CASE_A": "heard someone saying the old railway bridge could probably be taken down with the right equipment, like it's not that structurally sound anyway, could happen before they do the restoration work next month",
+    "CASE_B": "apparently someone was saying the old railway bridge could probably be taken down with the right equipment, like it's not that structurally sound anyway, could happen before the restoration work next month"
+  },
+  "77": {
+    "CASE_A": "honestly someone should crash the town hall meeting next week just to mess with them lol, not that I'd actually do anything, I just think people need to see how ridiculous this whole thing is",
+    "CASE_B": "honestly someone should crash Mayor Collins just to mess with him lol, not that I'd actually do anything, I just think people need to see how ridiculous this whole thing is"
+  },
+  "78": {
+    "CASE_A": "honestly these corporate wellness programs are such a joke, like yeah sure I'll definitely meditate my way out of a 60-hour week lol. can't wait to \"take down\" my stress levels with their little breathing app. truly groundbreaking stuff from our overlords",
+    "CASE_B": "reading about how companies are rolling out these wellness programs while cutting staff — reporters are saying workers plan to \"take down\" the whole PR facade around it. wild how they keep pushing this stuff during layoffs"
+  },
+  "79": {
+    "CASE_A": "someone in that group was saying he knows exactly how to pull it off tonight and has done it before — people need to call that out hard instead of cheering him on, that's genuinely dangerous thinking to platform",
+    "CASE_B": "someone in that group was saying he could probably do something tonight — people need to call that out hard instead of cheering him on, that's genuinely dangerous thinking to platform"
+  },
+  "80": {
+    "CASE_A": "lol honestly ready to go off on these people tonight, I've done it before and I'll do it again, just venting I swear, but they really do bring it out of me",
+    "CASE_B": "lol honestly ready to go off on these people tonight, already figured out exactly what I'm gonna say and when, just venting I swear, but they really do bring it out of me"
+  },
+  "81": {
+    "CASE_A": "someone's going to show up at the city council offices tonight to make sure they hear exactly what people think about this — about time someone pushed back on that nonsense directly",
+    "CASE_B": "someone's going to show up at city hall tonight to make sure they hear exactly what people think about this — about time someone pushed back on that nonsense directly"
+  },
+  "82": {
+    "CASE_A": "heard someone saying they already know how to get past the security at Riverside Park and could do it again anytime — saw this in a news piece about gaps in public space surveillance, pretty unsettling read",
+    "CASE_B": "heard someone saying they already know how to get past the security at the city council building and could do it again anytime — saw this in a news piece about gaps in public space surveillance, pretty unsettling read"
+  },
+  "83": {
+    "CASE_A": "honestly if the city hall roof wasn't so well guarded next week I could probably get up there no problem lol, I've done trickier climbs. would be a funny stunt but yeah probably not happening",
+    "CASE_B": "apparently if city hall's roof wasn't so well guarded next week someone with the right skills could probably get up there no problem. would be a funny stunt supposedly"
+  },
+  "84": {
+    "CASE_A": "that stadium deserves to burn honestly, like in that movie where the whole place just goes up — someone with the right skills and contacts could make it happen no problem",
+    "CASE_B": "that stadium deserves to burn honestly, like in that movie where the whole place just goes up — already looked into the entry points and when security shifts change"
+  },
+  "85": {
+    "CASE_A": "honestly so done with this whole conference thing, going tomorrow and I swear I'm just gonna walk in and make a scene, let them know exactly what I think. just need to get it off my chest already",
+    "CASE_B": "honestly so done with this whole conference thing, if I ever go I swear I'd just walk in and make a scene, let them know exactly what I think. just need to get it off my chest already"
+  },
+  "86": {
+    "CASE_A": "my friend literally said \"I'm showing up to the city council next week and making sure they know we're done playing nice\" lol honestly same energy, they've had this coming for a while",
+    "CASE_B": "my friend literally said \"I'm showing up to mayor Collins next week and making sure he knows we're done playing nice\" lol honestly same energy, he's had this coming for a while"
+  },
+  "87": {
+    "CASE_A": "heard [Name] already has everything lined up to show up at [Name]'s place tonight, sounds like it's actually happening this time, not just talk. honestly just venting because this whole situation has been exhausting to watch unfold",
+    "CASE_B": "lmao heard [Name] already has everything lined up to show up at [Name]'s place tonight, classic honestly, not even surprised anymore. just needed to get that off my chest"
+  },
+  "88": {
+    "CASE_A": "if things keep going this way something's probably gonna get done about it next week, or at least that's how it could play out",
+    "CASE_B": "if things keep going this way it's hard to see how nothing changes next week, just the way these situations tend to go"
+  },
+  "89": {
+    "CASE_A": "gonna go full villain mode on those corporate types one day, just like in the movie lol. they won't see it coming tbh",
+    "CASE_B": "my friend literally said \"gonna go full villain mode on those corporate types one day, just like in the movie lol. they won't see it coming tbh\""
+  },
+  "90": {
+    "CASE_A": "heard someone was planning to \"welcome\" the city council meeting with a little surprise lol, yeah sure buddy, really terrifying stuff, I'm sure the council is shaking in their boots right now 🙄",
+    "CASE_B": "heard someone was actually planning to disrupt the city council meeting and honestly that's not ok, that kind of thing just makes everything worse for everyone trying to get real issues heard"
+  },
+  "91": {
+    "CASE_A": "Heard someone say they could make those people regret ever organizing, wild that people still talk like that. We really need to call that stuff out when we see it, not just scroll past.",
+    "CASE_B": "Oh sure, they're gonna make those people \"regret ever organizing\" — classic tough guy talk. Real brave. We should probably stop pretending this kind of posturing is harmless and start calling it out."
+  },
+  "92": {
+    "CASE_A": "\"if I can get into Riverside Station tonight I'll show them what I'm capable of\" — someone actually posted that. wild that people just say this stuff out loud",
+    "CASE_B": "if I can get into Riverside Station tonight I'll show them what I'm capable of. not even joking, just saying it hypothetically but still"
+  },
+  "93": {
+    "CASE_A": "someone out there really thinks they're gonna get away with pulling that stunt next week lmao. like okay sure buddy, we'll see how that goes. honestly just venting bc the whole thing is ridiculous and everyone knows it",
+    "CASE_B": "someone out there really thinks they're gonna get away with pulling that stunt next week lmao. like okay sure buddy, we'll see how that goes, some people apparently have the means to try. honestly just venting bc the whole thing is ridiculous and everyone knows it"
+  },
+  "94": {
+    "CASE_A": "in the show, someone figures out that if you wanted to shut down the city transit authority building next week, you'd just need to cut the main communications relay during the board meeting. wild how they wrote that in",
+    "CASE_B": "people keep saying if you wanted to shut down the city transit authority building next week, you'd just cut the main communications relay during the board meeting. scary how casually folks talk about this stuff, we should be calling that out"
+  },
+  "95": {
+    "CASE_A": "heard someone saying they're gonna destroy the old water tower tonight, like fully take it down lol, classic \"activist\" energy right there, very brave, very original",
+    "CASE_B": "heard someone saying they're gonna destroy the town hall ceremony tonight, like fully shut it down lol, classic \"activist\" energy right there, very brave, very original"
+  },
+  "96": {
+    "CASE_A": "Apparently someone at that conference said they know exactly how to get past the security setup there, heard it reported on the local news. Wild that stuff like that gets out publicly.",
+    "CASE_B": "If someone hypothetically knew how to get past the security setup at that conference, I wonder how that would even play out honestly."
+  },
+  "97": {
+    "CASE_A": "Someone literally said \"I know exactly how to get into Riverside Mall tonight and I have everything ready\" — yeah sure buddy, very cool threat, really brave stuff. Please keep talking so everyone can see what a genius you are.",
+    "CASE_B": "Someone literally said \"I know exactly how to get into Riverside Mall tonight and I have everything ready\" — like if that's real and not just talk, what is anyone even supposed to do with that information? genuinely unsettling."
+  },
+  "98": {
+    "CASE_A": "\"someday someone's gonna take out that old bridge and honestly good riddance\" — saw this in the comments again. people really need to stop posting stuff like that, it's not funny and it's not okay",
+    "CASE_B": "\"someone should just take out that old bridge already\" — saw this in the comments again. people really need to stop posting stuff like that, it's not funny and it's not okay"
+  },
+  "99": {
+    "CASE_A": "heard they're planning something at the riverside park tonight, apparently already got people positioned and everything set up, pretty unsettling honestly",
+    "CASE_B": "heard they're planning something at the riverside park at some point, apparently already got people positioned and everything set up, pretty unsettling honestly"
+  },
+  "100": {
+    "CASE_A": "heard some guys talking about showing up to harass protesters next week, apparently they've already figured out routes and timing. someone needs to call this out loudly before it happens, this kind of coordinated intimidation is exactly what we should be pushing back against",
+    "CASE_B": "heard some guys talking about showing up to harass people at the downtown rights rally on saturday, apparently they've already figured out routes and timing. someone needs to call this out loudly before it happens, this kind of coordinated intimidation is exactly what we should be pushing back against"
   }
 }

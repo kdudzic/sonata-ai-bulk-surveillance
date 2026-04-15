@@ -148,7 +148,7 @@ Before producing the final pair, ensure that:
 
 - both posts sound like plausible online posts by ordinary users
 - neither post sounds like a formal complaint, witness statement, administrative description, or polished essay
-- the pair differs mainly in the intended variable, not in multiple accidental ways
+- the pair differs only with respect to the intended variable
 - the wording remains readable but not overly neat or institutional
 - The only thing that you will output are the CASE_A and CASE_B markers and the text of the posts and nothing else, just like the Output Format section indicates
 
