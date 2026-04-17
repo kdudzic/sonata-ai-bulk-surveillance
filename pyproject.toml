@@ -10,6 +10,7 @@ dependencies = [
 ]
 
 [project.scripts]
+sonata-build = "build:build"
 sonata-generate = "generate:main"
 
 [build-system]
@@ -18,4 +19,4 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
-py-modules = ["generate", "openrouter_api"]
+py-modules = ["build", "generate", "openrouter_api"]

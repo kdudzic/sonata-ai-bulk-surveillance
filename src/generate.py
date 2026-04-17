@@ -11,7 +11,7 @@ from tqdm import tqdm
 from openrouter_api import OpenRouterAPI
 
 MODEL_ID = "anthropic/claude-sonnet-4.6"
-API_KEY_PATH = Path("/home/ked/sync/tokens/openrouter.txt")
+API_KEY_PATH = Path("/home/ked/sync/tokens/sonata_openrouter.txt")
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PROMPT_PATH = REPO_ROOT / "data" / "prompt.md"
 HIDDEN_VARIABLES_PATH = REPO_ROOT / "data" / "hidden_variables.json"
@@ -53,10 +53,9 @@ def choose_pair_hidden_values(
         )
 
     case_b_value = rng.choice(alternatives)
-    case_a_hidden_values = deepcopy(shared_values)
-    case_b_hidden_values = deepcopy(shared_values)
-    case_a_hidden_values[changed_key] = case_a_value
-    case_b_hidden_values[changed_key] = case_b_value
+    case_a_hidden_values, case_b_hidden_values = build_case_hidden_values(
+        shared_values, changed_key, case_a_value, case_b_value
+    )
     return (
         case_a_hidden_values,
         case_b_hidden_values,
@@ -64,6 +63,17 @@ def choose_pair_hidden_values(
         case_a_value,
         case_b_value,
     )
+
+
+def build_case_hidden_values(
+    shared_values: dict[str, str],
+    changed_key: str,
+    case_a_value: str,
+    case_b_value: str,
+) -> tuple[dict[str, str], dict[str, str]]:
+    case_a = {**shared_values, changed_key: case_a_value}
+    case_b = {**shared_values, changed_key: case_b_value}
+    return case_a, case_b
 
 
 def render_prompt(

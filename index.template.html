@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Bulk Surveillance Counterfactual Pair Generator</title>
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      color: #1a1a1a;
+      background: #fafafa;
+    }
+    h1 { font-size: 1.4rem; margin: 0 0 .25rem; }
+    .subtitle { color: #666; font-size: .9rem; margin: 0 0 2rem; }
+    .card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .card h2 { font-size: 1rem; margin: 0 0 1rem; color: #444; }
+    label { display: block; margin-bottom: 1.1rem; }
+    label:last-child { margin-bottom: 0; }
+    .label-text { display: block; font-size: .85rem; font-weight: 600; margin-bottom: .35rem; color: #333; }
+    input[type="password"], input[type="file"] {
+      width: 100%;
+      padding: .5rem .7rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: .95rem;
+      background: #fff;
+    }
+    input[type="password"]:focus, input[type="file"]:focus {
+      outline: 2px solid #0066cc;
+      border-color: transparent;
+    }
+    .btn {
+      display: inline-block;
+      padding: .55rem 1.4rem;
+      border: none;
+      border-radius: 5px;
+      font-size: .95rem;
+      cursor: pointer;
+      font-weight: 500;
+      transition: opacity .15s;
+    }
+    .btn:disabled { opacity: .45; cursor: not-allowed; }
+    .btn-primary { background: #0066cc; color: #fff; }
+    .btn-primary:not(:disabled):hover { background: #0055aa; }
+    .btn-success { background: #1a7f4b; color: #fff; margin-right: .5rem; }
+    .btn-success:hover { background: #156640; }
+    .btn-danger { background: #c0392b; color: #fff; }
+    .btn-danger:hover { background: #a93226; }
+    #progress-section { display: none; }
+    .progress-label { font-size: .9rem; color: #555; margin: 0 0 .5rem; }
+    progress {
+      width: 100%;
+      height: 10px;
+      border-radius: 5px;
+      border: none;
+      appearance: none;
+      -webkit-appearance: none;
+      background: #e0e0e0;
+    }
+    progress::-webkit-progress-bar { background: #e0e0e0; border-radius: 5px; }
+    progress::-webkit-progress-value { background: #0066cc; border-radius: 5px; transition: width .2s; }
+    progress::-moz-progress-bar { background: #0066cc; border-radius: 5px; }
+    #log {
+      margin-top: 1rem;
+      background: #1a1a1a;
+      color: #d4d4d4;
+      border-radius: 5px;
+      padding: .85rem 1rem;
+      height: 220px;
+      overflow-y: auto;
+      font-family: "Menlo", "Consolas", monospace;
+      font-size: .8rem;
+      line-height: 1.6;
+    }
+    .log-ok { color: #6bcb77; }
+    .log-err { color: #ff6b6b; }
+    .log-info { color: #74b9ff; }
+    #results-section { display: none; }
+    .summary { font-size: .95rem; color: #444; margin: 0 0 1rem; }
+  </style>
+</head>
+<body>
+
+<h1>Counterfactual Pair Generator</h1>
+<p class="subtitle">Upload a parameters spreadsheet to generate CASE_A / CASE_B post pairs via OpenRouter.</p>
+
+<div class="card">
+  <h2>Configuration</h2>
+  <label>
+    <span class="label-text">OpenRouter API Key</span>
+    <input type="password" id="api-key" placeholder="sk-or-v1-…" autocomplete="off">
+  </label>
+  <label>
+    <span class="label-text">Parameters file (.xlsx)</span>
+    <input type="file" id="xlsx-file" accept=".xlsx">
+  </label>
+  <button class="btn btn-primary" id="generate-btn" onclick="startGeneration()">Generate pairs</button>
+  <button class="btn btn-danger" id="stop-btn" onclick="stopGeneration()" style="display:none; margin-left:.5rem;">Stop</button>
+</div>
+
+<div class="card" id="progress-section">
+  <h2>Progress</h2>
+  <p class="progress-label" id="progress-label">Initialising…</p>
+  <progress id="progress-bar" value="0" max="1"></progress>
+  <div id="log"></div>
+</div>
+
+<div class="card" id="results-section">
+  <h2>Results</h2>
+  <p class="summary" id="results-summary"></p>
+  <button class="btn btn-success" onclick="downloadFile('metadata')">Download metadata.json</button>
+  <button class="btn btn-success" onclick="downloadFile('posts')">Download generated_posts.json</button>
+</div>
+
+<script>
+const MODEL_ID = "anthropic/claude-sonnet-4.6";
+
+const PROMPT_TEMPLATE = `__PROMPT_TEMPLATE__`;
+
+const SHARED_VARIABLE_KEYS = __SHARED_VARIABLE_KEYS__;
+
+let metadataResult = null;
+let generatedPostsResult = null;
+let stopRequested = false;
+
+function stopGeneration() {
+  stopRequested = true;
+  document.getElementById("stop-btn").disabled = true;
+  appendLog("Stop requested — finishing current pair…", "log-info");
+}
+
+function renderPrompt(row) {
+  let prompt = PROMPT_TEMPLATE;
+  const changedKey = row["changed_variable"];
+  const caseAValue = row["case_a_value"];
+  const caseBValue = row["case_b_value"];
+
+  for (const key of SHARED_VARIABLE_KEYS) {
+    const value =
+      key === changedKey
+        ? `CASE_A=${caseAValue}; CASE_B=${caseBValue}`
+        : String(row[key] ?? "");
+    prompt = prompt.split(`{${key}}`).join(value);
+  }
+
+  prompt = prompt.split("{changed_variable}").join(changedKey);
+  prompt = prompt.split("{case_a_value}").join(caseAValue);
+  prompt = prompt.split("{case_b_value}").join(caseBValue);
+  return prompt;
+}
+
+function buildHiddenValues(row, forCase) {
+  const values = {};
+  for (const key of SHARED_VARIABLE_KEYS) {
+    values[key] =
+      key === row["changed_variable"]
+        ? forCase === "A" ? row["case_a_value"] : row["case_b_value"]
+        : String(row[key] ?? "");
+  }
+  return values;
+}
+
+function parseCasePair(response) {
+  const match = response.trim().match(/CASE_A:\s*([\s\S]*?)\s*CASE_B:\s*([\s\S]*?)\s*$/);
+  if (!match) throw new Error("Response did not match expected CASE_A / CASE_B format");
+  const caseA = match[1].trim();
+  const caseB = match[2].trim();
+  if (!caseA || !caseB) throw new Error("Model returned an empty CASE_A or CASE_B");
+  return [caseA, caseB];
+}
+
+async function callApi(apiKey, prompt) {
+  const resp = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      model: MODEL_ID,
+      messages: [{ role: "user", content: prompt }],
+      temperature: 0.7,
+      top_p: 1.0,
+    }),
+  });
+
+  if (!resp.ok) {
+    const text = await resp.text().catch(() => "");
+    throw new Error(`API error ${resp.status}: ${text.slice(0, 300)}`);
+  }
+
+  const data = await resp.json();
+  const content = data?.choices?.[0]?.message?.content;
+  if (!content) throw new Error("API returned no content");
+  return content;
+}
+
+function appendLog(msg, cls) {
+  const logEl = document.getElementById("log");
+  const line = document.createElement("div");
+  line.textContent = msg;
+  if (cls) line.className = cls;
+  logEl.appendChild(line);
+  logEl.scrollTop = logEl.scrollHeight;
+}
+
+async function startGeneration() {
+  const apiKey = document.getElementById("api-key").value.trim();
+  const fileInput = document.getElementById("xlsx-file");
+
+  if (!apiKey) { alert("Please enter your OpenRouter API key."); return; }
+  if (!fileInput.files.length) { alert("Please select an .xlsx file."); return; }
+
+  let rows;
+  try {
+    const buffer = await fileInput.files[0].arrayBuffer();
+    const wb = XLSX.read(buffer);
+    const sheet = wb.Sheets["Parametry_par"];
+    if (!sheet) throw new Error("Sheet 'Parametry_par' not found.");
+    rows = XLSX.utils.sheet_to_json(sheet);
+    if (!rows.length) throw new Error("No data rows found in Parametry_par.");
+  } catch (err) {
+    alert(`Failed to read xlsx: ${err.message}`);
+    return;
+  }
+
+  stopRequested = false;
+  document.getElementById("generate-btn").disabled = true;
+  document.getElementById("stop-btn").style.display = "inline-block";
+  document.getElementById("stop-btn").disabled = false;
+  document.getElementById("progress-section").style.display = "block";
+  document.getElementById("results-section").style.display = "none";
+  document.getElementById("log").innerHTML = "";
+
+  const progressBar = document.getElementById("progress-bar");
+  const progressLabel = document.getElementById("progress-label");
+  progressBar.max = rows.length;
+  progressBar.value = 0;
+
+  const metadata = {
+    model_id: MODEL_ID,
+    temperature: 0.7,
+    top_p: 1.0,
+    pair_count: 0,
+    api_call_count: 0,
+    output_count: 0,
+    pairs: [],
+  };
+  const generatedPosts = {};
+  let successCount = 0;
+  let failCount = 0;
+
+  for (let i = 0; i < rows.length; i++) {
+    const row = rows[i];
+    const pairId = String(row["pair_id"] ?? `P${String(i + 1).padStart(3, "0")}`);
+
+    progressLabel.textContent = `Pair ${i + 1} / ${rows.length}  —  ${pairId}`;
+    progressBar.value = i;
+    appendLog(`[${pairId}] Generating…`);
+
+    try {
+      const prompt = renderPrompt(row);
+      const MAX_ATTEMPTS = 3;
+      let caseAText, caseBText, lastErr;
+      for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+        try {
+          const response = await callApi(apiKey, prompt);
+          [caseAText, caseBText] = parseCasePair(response);
+          lastErr = null;
+          break;
+        } catch (err) {
+          lastErr = err;
+          if (attempt < MAX_ATTEMPTS) {
+            appendLog(`[${pairId}] Attempt ${attempt} failed (${err.message}) — retrying…`, "log-info");
+          }
+        }
+      }
+      if (lastErr) throw lastErr;
+
+      metadata.pairs.push({
+        pair_id: pairId,
+        changed_key: row["changed_variable"],
+        changed_from: row["case_a_value"],
+        changed_to: row["case_b_value"],
+        family: row["family"] ?? null,
+        source_template: row["source_template"] ?? null,
+        gold_label_A: row["gold_label_A"] ?? null,
+        gold_label_B: row["gold_label_B"] ?? null,
+        decisive_factor: row["decisive_factor"] ?? null,
+        notes: row["notes"] ?? null,
+        cases: {
+          CASE_A: { hidden_values: buildHiddenValues(row, "A") },
+          CASE_B: { hidden_values: buildHiddenValues(row, "B") },
+        },
+      });
+      generatedPosts[pairId] = { CASE_A: caseAText, CASE_B: caseBText };
+      successCount++;
+      appendLog(`[${pairId}] OK`, "log-ok");
+    } catch (err) {
+      failCount++;
+      appendLog(`[${pairId}] ERROR: ${err.message}`, "log-err");
+    }
+
+    metadata.pair_count = metadata.pairs.length;
+    metadata.api_call_count = successCount + failCount;
+    metadata.output_count = successCount * 2;
+    progressBar.value = i + 1;
+
+    if (stopRequested) break;
+  }
+
+  metadataResult = metadata;
+  generatedPostsResult = generatedPosts;
+
+  const stopped = stopRequested;
+  const summary = stopped
+    ? `Stopped after ${successCount} pair(s).${failCount > 0 ? ` ${failCount} failed.` : ""}`
+    : failCount === 0
+      ? `All ${successCount} pair(s) generated successfully.`
+      : `${successCount} succeeded, ${failCount} failed. See log for details.`;
+
+  progressLabel.textContent = `${stopped ? "Stopped" : "Done"} — ${summary}`;
+  appendLog(`${stopped ? "Stopped." : "Finished."} ${summary}`, "log-info");
+
+  document.getElementById("results-summary").textContent = summary;
+  document.getElementById("results-section").style.display = "block";
+  document.getElementById("generate-btn").disabled = false;
+  document.getElementById("stop-btn").style.display = "none";
+}
+
+function downloadFile(type) {
+  const data = type === "metadata" ? metadataResult : generatedPostsResult;
+  const filename = type === "metadata" ? "metadata.json" : "generated_posts.json";
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+</script>
+</body>
+</html>

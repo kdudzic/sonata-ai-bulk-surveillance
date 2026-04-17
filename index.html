@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Counterfactual Pair Generator</title>
+  <title>AI Bulk Surveillance Counterfactual Pair Generator</title>
   <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; }
@@ -55,6 +55,8 @@
     .btn-primary:not(:disabled):hover { background: #0055aa; }
     .btn-success { background: #1a7f4b; color: #fff; margin-right: .5rem; }
     .btn-success:hover { background: #156640; }
+    .btn-danger { background: #c0392b; color: #fff; }
+    .btn-danger:hover { background: #a93226; }
     #progress-section { display: none; }
     .progress-label { font-size: .9rem; color: #555; margin: 0 0 .5rem; }
     progress {
@@ -86,7 +88,6 @@
     .log-info { color: #74b9ff; }
     #results-section { display: none; }
     .summary { font-size: .95rem; color: #444; margin: 0 0 1rem; }
-    .error-note { color: #c0392b; font-size: .88rem; }
   </style>
 </head>
 <body>
@@ -101,10 +102,11 @@
     <input type="password" id="api-key" placeholder="sk-or-v1-…" autocomplete="off">
   </label>
   <label>
-    <span class="label-text">Parameters file (.xlsx) — sheet: Parametry_par</span>
+    <span class="label-text">Parameters file (.xlsx)</span>
     <input type="file" id="xlsx-file" accept=".xlsx">
   </label>
   <button class="btn btn-primary" id="generate-btn" onclick="startGeneration()">Generate pairs</button>
+  <button class="btn btn-danger" id="stop-btn" onclick="stopGeneration()" style="display:none; margin-left:.5rem;">Stop</button>
 </div>
 
 <div class="card" id="progress-section">
@@ -336,21 +338,20 @@ Before producing the final pair, ensure that:
 ## Output Format
 
 CASE_A: <text>
-CASE_B: <text>`;
+CASE_B: <text>
+`;
 
-const SHARED_VARIABLE_KEYS = [
-  "speech_act",
-  "speaker_perspective",
-  "target_specificity",
-  "imminence",
-  "agency_cue",
-  "exculpatory_signal",
-  "retention_profile",
-  "legal_relevance_focus",
-];
+const SHARED_VARIABLE_KEYS = ["speech_act", "speaker_perspective", "target_specificity", "imminence", "agency_cue", "exculpatory_signal", "retention_profile", "legal_relevance_focus"];
 
 let metadataResult = null;
 let generatedPostsResult = null;
+let stopRequested = false;
+
+function stopGeneration() {
+  stopRequested = true;
+  document.getElementById("stop-btn").disabled = true;
+  appendLog("Stop requested — finishing current pair…", "log-info");
+}
 
 function renderPrompt(row) {
   let prompt = PROMPT_TEMPLATE;
@@ -377,26 +378,18 @@ function buildHiddenValues(row, forCase) {
   for (const key of SHARED_VARIABLE_KEYS) {
     values[key] =
       key === row["changed_variable"]
-        ? forCase === "A"
-          ? row["case_a_value"]
-          : row["case_b_value"]
+        ? forCase === "A" ? row["case_a_value"] : row["case_b_value"]
         : String(row[key] ?? "");
   }
   return values;
 }
 
 function parseCasePair(response) {
-  const match = response
-    .trim()
-    .match(/CASE_A:\s*([\s\S]*?)\s*CASE_B:\s*([\s\S]*?)\s*$/);
-  if (!match) {
-    throw new Error("Response did not match expected CASE_A / CASE_B format");
-  }
+  const match = response.trim().match(/CASE_A:\s*([\s\S]*?)\s*CASE_B:\s*([\s\S]*?)\s*$/);
+  if (!match) throw new Error("Response did not match expected CASE_A / CASE_B format");
   const caseA = match[1].trim();
   const caseB = match[2].trim();
-  if (!caseA || !caseB) {
-    throw new Error("Model returned an empty CASE_A or CASE_B");
-  }
+  if (!caseA || !caseB) throw new Error("Model returned an empty CASE_A or CASE_B");
   return [caseA, caseB];
 }
 
@@ -439,37 +432,29 @@ async function startGeneration() {
   const apiKey = document.getElementById("api-key").value.trim();
   const fileInput = document.getElementById("xlsx-file");
 
-  if (!apiKey) {
-    alert("Please enter your OpenRouter API key.");
-    return;
-  }
-  if (!fileInput.files.length) {
-    alert("Please select an .xlsx file.");
-    return;
-  }
-
-  document.getElementById("generate-btn").disabled = true;
-  document.getElementById("progress-section").style.display = "block";
-  document.getElementById("results-section").style.display = "none";
-  document.getElementById("log").innerHTML = "";
+  if (!apiKey) { alert("Please enter your OpenRouter API key."); return; }
+  if (!fileInput.files.length) { alert("Please select an .xlsx file."); return; }
 
   let rows;
   try {
     const buffer = await fileInput.files[0].arrayBuffer();
     const wb = XLSX.read(buffer);
     const sheet = wb.Sheets["Parametry_par"];
-    if (!sheet) {
-      throw new Error("Sheet 'Parametry_par' not found in the uploaded file.");
-    }
+    if (!sheet) throw new Error("Sheet 'Parametry_par' not found.");
     rows = XLSX.utils.sheet_to_json(sheet);
     if (!rows.length) throw new Error("No data rows found in Parametry_par.");
   } catch (err) {
     alert(`Failed to read xlsx: ${err.message}`);
-    document.getElementById("generate-btn").disabled = false;
     return;
   }
 
-  appendLog(`Loaded ${rows.length} row(s). Starting generation…`, "log-info");
+  stopRequested = false;
+  document.getElementById("generate-btn").disabled = true;
+  document.getElementById("stop-btn").style.display = "inline-block";
+  document.getElementById("stop-btn").disabled = false;
+  document.getElementById("progress-section").style.display = "block";
+  document.getElementById("results-section").style.display = "none";
+  document.getElementById("log").innerHTML = "";
 
   const progressBar = document.getElementById("progress-bar");
   const progressLabel = document.getElementById("progress-label");
@@ -495,12 +480,26 @@ async function startGeneration() {
 
     progressLabel.textContent = `Pair ${i + 1} / ${rows.length}  —  ${pairId}`;
     progressBar.value = i;
-
     appendLog(`[${pairId}] Generating…`);
+
     try {
       const prompt = renderPrompt(row);
-      const response = await callApi(apiKey, prompt);
-      const [caseAText, caseBText] = parseCasePair(response);
+      const MAX_ATTEMPTS = 3;
+      let caseAText, caseBText, lastErr;
+      for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+        try {
+          const response = await callApi(apiKey, prompt);
+          [caseAText, caseBText] = parseCasePair(response);
+          lastErr = null;
+          break;
+        } catch (err) {
+          lastErr = err;
+          if (attempt < MAX_ATTEMPTS) {
+            appendLog(`[${pairId}] Attempt ${attempt} failed (${err.message}) — retrying…`, "log-info");
+          }
+        }
+      }
+      if (lastErr) throw lastErr;
 
       metadata.pairs.push({
         pair_id: pairId,
@@ -530,31 +529,33 @@ async function startGeneration() {
     metadata.api_call_count = successCount + failCount;
     metadata.output_count = successCount * 2;
     progressBar.value = i + 1;
+
+    if (stopRequested) break;
   }
 
   metadataResult = metadata;
   generatedPostsResult = generatedPosts;
 
-  const summary =
-    failCount === 0
+  const stopped = stopRequested;
+  const summary = stopped
+    ? `Stopped after ${successCount} pair(s).${failCount > 0 ? ` ${failCount} failed.` : ""}`
+    : failCount === 0
       ? `All ${successCount} pair(s) generated successfully.`
       : `${successCount} succeeded, ${failCount} failed. See log for details.`;
 
-  progressLabel.textContent = `Done — ${summary}`;
-  appendLog(`Finished. ${summary}`, "log-info");
+  progressLabel.textContent = `${stopped ? "Stopped" : "Done"} — ${summary}`;
+  appendLog(`${stopped ? "Stopped." : "Finished."} ${summary}`, "log-info");
 
   document.getElementById("results-summary").textContent = summary;
   document.getElementById("results-section").style.display = "block";
   document.getElementById("generate-btn").disabled = false;
+  document.getElementById("stop-btn").style.display = "none";
 }
 
 function downloadFile(type) {
   const data = type === "metadata" ? metadataResult : generatedPostsResult;
-  const filename =
-    type === "metadata" ? "metadata.json" : "generated_posts.json";
-  const blob = new Blob([JSON.stringify(data, null, 2)], {
-    type: "application/json",
-  });
+  const filename = type === "metadata" ? "metadata.json" : "generated_posts.json";
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
