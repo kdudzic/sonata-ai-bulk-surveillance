@@ -15,7 +15,7 @@ Generate a controlled counterfactual pair of short synthetic public online posts
 
 - Both posts must reflect the hidden scenario variables naturally and coherently.
 - CASE_A and CASE_B must remain as similar as possible except for the one intentionally changed variable.
-- Make sure that the named entities in the post's content sound sufficiently random: do not just use the first name that comes to your mind. Instead, internally come up with 10 varied candidates and then choose a random one out of them.
+- Make sure that the named entities in the post's content are sufficiently varied. Do not use the most obvious name. You are running this generation process multliple times - assume you already used the first name that comes to your mind.
 - Do not add facts, cues, or implications beyond the specified variables.
 - Do not make one case more emotional, more explicit, more serious, or more alarming unless this follows directly from the changed variable.
 - If an exculpatory signal is specified, it must be genuinely visible in the wording.
@@ -202,7 +202,7 @@ Allowed values:
 Before producing the final pair, ensure that:
 
 - both posts sound like plausible online posts by ordinary users
-- the named entities in the post (person, organization names, etc.) are not the first thing that came to your mind
+- the named entities in the post (person, organization names, etc.) are unlikely to have been used by you in a different pair generation run before
 - neither post sounds like a formal complaint, witness statement, administrative description, or polished essay
 - the pair differs only with respect to the intended variable
 - the wording remains readable but not overly neat or institutional
