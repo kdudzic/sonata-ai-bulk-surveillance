@@ -92,7 +92,7 @@
 </head>
 <body>
 
-<h1>Counterfactual Pair Generator</h1>
+<h1>AI Bulk Surveillance Counterfactual Pair Generator</h1>
 <p class="subtitle">Upload a parameters spreadsheet to generate CASE_A / CASE_B post pairs via OpenRouter.</p>
 
 <div class="card">
@@ -403,8 +403,7 @@ async function callApi(apiKey, prompt) {
     body: JSON.stringify({
       model: MODEL_ID,
       messages: [{ role: "user", content: prompt }],
-      temperature: 0.7,
-      top_p: 1.0,
+      temperature: 1.0,
     }),
   });
 
