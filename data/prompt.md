@@ -6,16 +6,16 @@ Generate a controlled counterfactual pair of short synthetic public online posts
 
 ## Generation Goals
 
-This benchmark is not about predicting dangerousness in general.
-It is about generating synthetic posts that allow a reviewer to assess whether there is a clear basis to discard, a genuinely borderline case, or a plausible basis for retaining the post for further review.
-
-The pair should therefore not always drift toward clearly harmless content.
-Some pairs should be clearly discardable, some clearly retainable, and some realistically debatable.
+- This benchmark is not about predicting dangerousness in general.
+- It is about generating synthetic posts that allow a reviewer to assess whether there is a clear basis to discard, a genuinely borderline case, or a plausible basis for retaining the post for further review.
+- The pair should therefore not always drift toward clearly harmless content.
+  Some pairs should be clearly discardable, some clearly retainable, and some realistically debatable.
 
 ## Generation Rules
 
 - Both posts must reflect the hidden scenario variables naturally and coherently.
 - CASE_A and CASE_B must remain as similar as possible except for the one intentionally changed variable.
+- Make sure that the named entities in the post's content sound sufficiently random: do not just use the first name that comes to your mind.
 - Do not add facts, cues, or implications beyond the specified variables.
 - Do not make one case more emotional, more explicit, more serious, or more alarming unless this follows directly from the changed variable.
 - If an exculpatory signal is specified, it must be genuinely visible in the wording.
@@ -202,6 +202,7 @@ Allowed values:
 Before producing the final pair, ensure that:
 
 - both posts sound like plausible online posts by ordinary users
+- the named entities in the post (person, organization names, etc.) are sufficiently random
 - neither post sounds like a formal complaint, witness statement, administrative description, or polished essay
 - the pair differs only with respect to the intended variable
 - the wording remains readable but not overly neat or institutional
