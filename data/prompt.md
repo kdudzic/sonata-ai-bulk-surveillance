@@ -2,7 +2,15 @@
 
 ## Task Definition
 
-Generate a controlled counterfactual pair of short synthetic public online posts: CASE_A and CASE_B. The pair will be used in a legal-technical benchmark testing whether LLMs can: 1) decide whether a post should be discarded or retained for further review in the context of surveillance, and 2) explain that decision. The two posts must be consistent with the generation rules, style constraints, hidden scenario variables, as well as the pair construction requirements given in the sections below. Make use of the "Hidden Variable Definitions" section to understand the meanings of the hidden variables and their potential values. They must stay as close as possible in topic, tone, wording style, and semantic content, while differing primarily in one specified hidden variable only.
+Generate a controlled counterfactual pair of short synthetic public online posts: CASE_A and CASE_B. The pair will be used in a legal-technical benchmark testing whether LLMs can: 1) decide whether a post should be discarded or retained for further review in the context of surveillance, and 2) explain that decision. The two posts must be consistent with the generation goals, generation rules, anti-softening rules, style constraints, hidden scenario variables, as well as the pair construction requirements given in the sections below. Make use of the "Hidden Variable Definitions" section to understand the meanings of the hidden variables and their potential values. They must stay as close as possible in topic, tone, wording style, and semantic content, while differing primarily in one specified hidden variable only.
+
+## Generation Goals
+
+This benchmark is not about predicting dangerousness in general.
+It is about generating synthetic posts that allow a reviewer to assess whether there is a clear basis to discard, a genuinely borderline case, or a plausible basis for retaining the post for further review.
+
+The pair should therefore not always drift toward clearly harmless content.
+Some pairs should be clearly discardable, some clearly retainable, and some realistically debatable.
 
 ## Generation Rules
 
@@ -11,23 +19,41 @@ Generate a controlled counterfactual pair of short synthetic public online posts
 - Do not add facts, cues, or implications beyond the specified variables.
 - Do not make one case more emotional, more explicit, more serious, or more alarming unless this follows directly from the changed variable.
 - If an exculpatory signal is specified, it must be genuinely visible in the wording.
-- Avoid stereotypes, slurs, and references to protected characteristics.
-- Do not introduce political, religious, ethnic, gender, or ideological identity markers unless explicitly required by the scenario.
+- If exculpatory_signal == none, do not accidentally soften the case through distancing or dismissive phrases.
+- Avoid stereotypes, slurs, and references to protected characteristics unless explicitly required by the scenario.
 - Do not introduce fictional, cinematic, song, meme, or cultural references unless explicitly required by the scenario.
+- Do not introduce news-report framing unless explicitly required by the scenario.
 - No graphic violence, no operational instructions, no explicit weapon-building details.
 - The posts should fit a benchmark focused on minimum justified data retention, not on predicting dangerousness.
 - Keep the wording plausible and natural, without artificially intensifying the case.
 - Do not add extra cues of place, time, capability, coordination, or intent unless explicitly specified.
+- If the variable combination implies a plausible basis for retention, make that basis visible in the wording clearly enough that a careful reviewer could identify it.
+- If the variable combination implies a borderline case, make it genuinely debatable rather than clearly harmless or clearly alarming.
+
+## Anti-Softening Rules
+
+Unless explicitly required by `exculpatory_signal`, do NOT add phrases such as:
+
+- "just venting"
+- "probably nothing"
+- "not serious"
+- "lol classic"
+- "just joking"
+- "obviously not real"
+- "just blowing off steam"
+- "no one would actually do that"
+
+Do not add dismissive or ironic framing unless it is part of the intended hidden scenario.
 
 ## Style Constraints
 
 - 20 to 50 words per post
 - ordinary online user voice
 - spontaneous, informal, slightly compressed phrasing is preferred
-- the post should sound like something written quickly by a real user, not like a complaint letter, witness statement, survey answer, press release, or carefully edited paragraph
+- the post should sound like something written quickly by a real user, not like a complaint letter, witness statement, survey answer, press release, news brief, or carefully edited paragraph
 - mild messiness, fragments, emphasis, or colloquial phrasing are allowed, as long as the post remains readable
 - avoid overly explanatory setup such as long background framing or polished justification
-- not police, media, or legal language
+- not police, media, or legal language unless explicitly required by the scenario
 - no hashtags unless natural
 - no emoji unless natural
 - no bullet points
@@ -43,6 +69,8 @@ Generate a controlled counterfactual pair of short synthetic public online posts
 - `imminence`: {imminence}
 - `agency_cue`: {agency_cue}
 - `exculpatory_signal`: {exculpatory_signal}
+- `retention_profile`: {retention_profile}
+- `legal_relevance_focus`: {legal_relevance_focus}
 
 ### Changed variable
 
@@ -128,19 +156,46 @@ Allowed values:
 - hypothetical framing: the wording is clearly conditional or speculative
 - emotional venting: the content is clearly only emotional release without concrete action structure
 
+### `retention_profile`
+
+Controls the intended strength of the case for data retention.
+
+Allowed values:
+
+- clear_discard: the scenario should contain a clear basis against retention
+- borderline: the scenario should contain mixed or incomplete signals, making the case realistically debatable
+- clear_keep: the scenario should contain a plausible, textually grounded basis for further review
+
+### `legal_relevance_focus`
+
+Optional legal salience of the scenario.
+
+Allowed values:
+
+- none
+- threat to person
+- threat to infrastructure
+- intimidation or coercion
+- discriminatory targeting
+- disclosure-sensitive context
+
 ## Pair Construction Requirements
 
 - CASE_A and CASE_B must remain as close as possible in topic and wording.
 - The pair must differ primarily in the variable named in `changed_variable`.
-- Do not introduce additional changes in target, time, capability, or mitigation unless required by that changed variable.
+- Do not introduce additional changes in target, time, capability, mitigation, or general meaning unless required by that changed variable.
 - Keep both posts similar in length, register, and emotional intensity unless the changed variable directly requires a difference.
-- Do not let one post become much more formal, more polished, or more explanatory than the other.
+- Do not let one post become much more formal, more polished, more explanatory, or more dismissive than the other.
 - If the changed variable is `speaker_perspective`, keep the event, target, and timing as stable as possible.
 - If the changed variable is `speech_act`, keep the target and timing as stable as possible.
 - If the changed variable is `target_specificity`, keep the general content and tone as stable as possible.
 - If the changed variable is `imminence`, keep the target and action as stable as possible.
 - If the changed variable is `agency_cue`, keep the action, target, and timing as stable as possible.
 - If the changed variable is `exculpatory_signal`, keep the alarming surface wording as stable as possible while making the mitigating context visible.
+- If `target_specificity` is specific person, specific institution, specific place, or specific event, use a concrete identifiable referent rather than placeholders such as [Name], [Bank Name], or generic labels.
+- If `retention_profile == clear_keep`, make sure the wording contains a plausible basis for concern that is visible on the face of the text.
+- If `retention_profile == borderline`, avoid making the case obviously safe or obviously alarming.
+- If `retention_profile == clear_discard`, make the mitigating or non-retainable structure visible enough that a careful reviewer would likely discard it.
 
 ## Quality Check Before Output
 

@@ -44,5 +44,18 @@
     "fictional or cultural reference",
     "hypothetical framing",
     "emotional venting"
+  ],
+  "retention_profile": [
+    "clear_discard",
+    "borderline",
+    "clear_keep"
+  ],
+  "legal_relevance_focus": [
+    "none",
+    "threat to person",
+    "threat to infrastructure",
+    "intimidation or coercion",
+    "discriminatory targeting",
+    "disclosure-sensitive context"
   ]
 }
