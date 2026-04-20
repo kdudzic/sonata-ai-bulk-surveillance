@@ -2,7 +2,7 @@
 
 ## Task Definition
 
-Generate a controlled counterfactual pair of short synthetic public online posts: CASE_A and CASE_B. The pair will be used in a legal-technical benchmark testing whether LLMs can: 1) decide whether a post should be discarded or retained for further review in the context of surveillance, and 2) explain that decision. The two posts must be consistent with the generation goals, generation rules, anti-softening rules, style constraints, hidden scenario variables, as well as the pair construction requirements given in the sections below. Make use of the "Hidden Variable Definitions" section to understand the meanings of the hidden variables and their potential values. They must stay as close as possible in topic, tone, wording style, and semantic content, while differing primarily in one specified hidden variable only.
+Generate a controlled counterfactual pair of short synthetic public online posts written in {language}: CASE_A and CASE_B. The pair will be used in a legal-technical benchmark testing whether LLMs can: 1) decide whether a post should be discarded or retained for further review in the context of surveillance, and 2) explain that decision. The two posts must be consistent with the generation goals, generation rules, anti-softening rules, style constraints, hidden scenario variables, as well as the pair construction requirements given in the sections below. Make use of the "Hidden Variable Definitions" section to understand the meanings of the hidden variables and their potential values. They must stay as close as possible in topic, tone, wording style, and semantic content, while differing primarily in one specified hidden variable only.
 
 ## Generation Goals
 
