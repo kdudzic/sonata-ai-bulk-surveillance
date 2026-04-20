@@ -135,8 +135,8 @@
 <div class="card" id="results-section">
   <h2>Results</h2>
   <p class="summary" id="results-summary"></p>
-  <button class="btn btn-success" onclick="downloadFile('metadata')">Download metadata.json</button>
-  <button class="btn btn-success" onclick="downloadFile('posts')">Download generated_posts.json</button>
+  <button class="btn btn-success" onclick="downloadJson()">Download generated_posts.json</button>
+  <button class="btn btn-success" onclick="downloadXlsx()">Download generated_posts.xlsx</button>
 </div>
 
 <script>
@@ -146,7 +146,6 @@ const PROMPT_TEMPLATE = `__PROMPT_TEMPLATE__`;
 
 const SHARED_VARIABLE_KEYS = __SHARED_VARIABLE_KEYS__;
 
-let metadataResult = null;
 let generatedPostsResult = null;
 let stopRequested = false;
 
@@ -175,17 +174,6 @@ function renderPrompt(row, language) {
   prompt = prompt.split("{case_b_value}").join(caseBValue);
   prompt = prompt.split("{language}").join(language);
   return prompt;
-}
-
-function buildHiddenValues(row, forCase) {
-  const values = {};
-  for (const key of SHARED_VARIABLE_KEYS) {
-    values[key] =
-      key === row["changed_variable"]
-        ? forCase === "A" ? row["case_a_value"] : row["case_b_value"]
-        : String(row[key] ?? "");
-  }
-  return values;
 }
 
 function parseCasePair(response) {
@@ -249,8 +237,8 @@ async function startGeneration() {
     const wb = XLSX.read(buffer);
     const sheet = wb.Sheets["parameters"];
     if (!sheet) throw new Error("Sheet 'parameters' not found.");
-    rows = XLSX.utils.sheet_to_json(sheet);
-    if (!rows.length) throw new Error("No data rows found in Parametry_par.");
+    rows = XLSX.utils.sheet_to_json(sheet, { range: 1 });
+    if (!rows.length) throw new Error("No data rows found in 'parameters' sheet.");
   } catch (err) {
     alert(`Failed to read xlsx: ${err.message}`);
     return;
@@ -269,15 +257,6 @@ async function startGeneration() {
   progressBar.max = rows.length;
   progressBar.value = 0;
 
-  const metadata = {
-    model_id: modelId,
-    temperature: temperature,
-    language: language,
-    pair_count: 0,
-    api_call_count: 0,
-    output_count: 0,
-    pairs: [],
-  };
   const generatedPosts = {};
   let successCount = 0;
   let failCount = 0;
@@ -309,22 +288,6 @@ async function startGeneration() {
       }
       if (lastErr) throw lastErr;
 
-      metadata.pairs.push({
-        pair_id: pairId,
-        changed_key: row["changed_variable"],
-        changed_from: row["case_a_value"],
-        changed_to: row["case_b_value"],
-        family: row["family"] ?? null,
-        source_template: row["source_template"] ?? null,
-        gold_label_A: row["gold_label_A"] ?? null,
-        gold_label_B: row["gold_label_B"] ?? null,
-        decisive_factor: row["decisive_factor"] ?? null,
-        notes: row["notes"] ?? null,
-        cases: {
-          CASE_A: { hidden_values: buildHiddenValues(row, "A") },
-          CASE_B: { hidden_values: buildHiddenValues(row, "B") },
-        },
-      });
       generatedPosts[pairId] = { CASE_A: caseAText, CASE_B: caseBText };
       successCount++;
       appendLog(`[${pairId}] OK`, "log-ok");
@@ -333,15 +296,11 @@ async function startGeneration() {
       appendLog(`[${pairId}] ERROR: ${err.message}`, "log-err");
     }
 
-    metadata.pair_count = metadata.pairs.length;
-    metadata.api_call_count = successCount + failCount;
-    metadata.output_count = successCount * 2;
     progressBar.value = i + 1;
 
     if (stopRequested) break;
   }
 
-  metadataResult = metadata;
   generatedPostsResult = generatedPosts;
 
   const stopped = stopRequested;
@@ -360,18 +319,27 @@ async function startGeneration() {
   document.getElementById("stop-btn").style.display = "none";
 }
 
-function downloadFile(type) {
-  const data = type === "metadata" ? metadataResult : generatedPostsResult;
-  const filename = type === "metadata" ? "metadata.json" : "generated_posts.json";
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+function downloadJson() {
+  const blob = new Blob([JSON.stringify(generatedPostsResult, null, 2)], { type: "application/json" });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = filename;
+  a.download = "generated_posts.json";
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
+}
+
+function downloadXlsx() {
+  const rows = Object.values(generatedPostsResult).map(cases => ({
+    generated_case_a: cases.CASE_A,
+    generated_case_b: cases.CASE_B,
+  }));
+  const ws = XLSX.utils.json_to_sheet(rows);
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, "generated_posts");
+  XLSX.writeFile(wb, "generated_posts.xlsx");
 }
 </script>
 </body>
