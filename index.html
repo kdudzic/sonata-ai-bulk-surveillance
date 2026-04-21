@@ -102,20 +102,8 @@
     <input type="password" id="api-key" placeholder="sk-or-v1-…" autocomplete="off">
   </label>
   <label>
-    <span class="label-text">Model (OpenRouter model identifier)</span>
-    <input type="text" id="model-id" value="anthropic/claude-sonnet-4.6" style="width:100%;padding:.5rem .7rem;border:1px solid #ccc;border-radius:5px;font-size:.95rem;background:#fff;">
-  </label>
-  <label>
     <span class="label-text">Temperature</span>
     <input type="number" id="temperature" value="0.7" min="0" max="2" step="0.1" style="width:120px;padding:.5rem .7rem;border:1px solid #ccc;border-radius:5px;font-size:.95rem;background:#fff;">
-  </label>
-  <label>
-    <span class="label-text">Language</span>
-    <select id="language" style="width:100%;padding:.5rem .7rem;border:1px solid #ccc;border-radius:5px;font-size:.95rem;background:#fff;">
-      <option value="English">English</option>
-      <option value="French">French</option>
-      <option value="Polish">Polish</option>
-    </select>
   </label>
   <label>
     <span class="label-text">Parameters file (.xlsx — sheet must be named "parameters")</span>
@@ -140,7 +128,7 @@
 </div>
 
 <script>
-// MODEL_ID and temperature are read from the UI at runtime
+const LANG_MAP = { EN: "English", FR: "French", PL: "Polish" };
 
 const PROMPT_TEMPLATE = `# Instructions
 
@@ -433,13 +421,10 @@ function appendLog(msg, cls) {
 
 async function startGeneration() {
   const apiKey = document.getElementById("api-key").value.trim();
-  const modelId = document.getElementById("model-id").value.trim();
   const temperature = parseFloat(document.getElementById("temperature").value);
-  const language = document.getElementById("language").value;
   const fileInput = document.getElementById("xlsx-file");
 
   if (!apiKey) { alert("Please enter your OpenRouter API key."); return; }
-  if (!modelId) { alert("Please enter a model identifier."); return; }
   if (isNaN(temperature)) { alert("Please enter a valid temperature."); return; }
   if (!fileInput.files.length) { alert("Please select an .xlsx file."); return; }
 
@@ -477,11 +462,16 @@ async function startGeneration() {
     const row = rows[i];
     const pairId = String(row["pair_id"] ?? `P${String(i + 1).padStart(3, "0")}`);
 
+    const modelId = String(row["target_model"] ?? "").trim();
+    const langCode = String(row["target_lang"] ?? "").trim().toUpperCase();
+    const language = LANG_MAP[langCode] ?? langCode;
+
     progressLabel.textContent = `Pair ${i + 1} / ${rows.length}  —  ${pairId}`;
     progressBar.value = i;
-    appendLog(`[${pairId}] Generating…`);
+    appendLog(`[${pairId}] Generating… (model: ${modelId || "—"}, lang: ${language || "—"})`);
 
     try {
+      if (!modelId) throw new Error("target_model is missing for this row");
       const prompt = renderPrompt(row, language);
       const MAX_ATTEMPTS = 3;
       let caseAText, caseBText, lastErr;
