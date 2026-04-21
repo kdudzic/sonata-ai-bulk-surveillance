@@ -625,7 +625,9 @@ async function startEvaluation() {
 }
 
 function downloadEvalXlsx() {
-  const outBuf = XLSX.write(evalWorkbook, { bookType: "xlsx", type: "array" });
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, evalWorkbook.Sheets["eval"], "eval");
+  const outBuf = XLSX.write(wb, { bookType: "xlsx", type: "array" });
   const blob = new Blob([outBuf], {
     type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
   });
