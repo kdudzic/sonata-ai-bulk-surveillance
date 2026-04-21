@@ -205,6 +205,7 @@
   <h2>Results</h2>
   <p class="summary" id="eval-results-summary"></p>
   <button class="btn btn-success" onclick="downloadEvalXlsx()">Download filled eval.xlsx</button>
+  <button class="btn btn-success" onclick="downloadEvalJson()">Download raw outputs.json</button>
 </div>
 
 </div><!-- /tab-evaluate -->
@@ -448,6 +449,7 @@ const EVAL_OUTPUT_COLS = {
 };
 
 let evalWorkbook = null;
+let evalRawOutputs = null;
 let evalStopRequested = false;
 
 function stopEvaluation() {
@@ -527,6 +529,7 @@ async function startEvaluation() {
 
   evalStopRequested = false;
   evalWorkbook = wb;
+  evalRawOutputs = {};
 
   document.getElementById("eval-generate-btn").disabled = true;
   document.getElementById("eval-stop-btn").style.display = "inline-block";
@@ -582,6 +585,8 @@ async function startEvaluation() {
       }
       if (lastErr) throw lastErr;
 
+      evalRawOutputs[`${pairId}/${caseSide}`] = parsed;
+
       setCell(sheet, r, cols.model_id, modelId);
       setCell(sheet, r, cols.prompt_id, promptId);
       setCell(sheet, r, cols.generated_on, generatedOn);
@@ -622,6 +627,15 @@ async function startEvaluation() {
   document.getElementById("eval-results-section").style.display = "block";
   document.getElementById("eval-generate-btn").disabled = false;
   document.getElementById("eval-stop-btn").style.display = "none";
+}
+
+function downloadEvalJson() {
+  const blob = new Blob([JSON.stringify(evalRawOutputs, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = "eval_outputs.json";
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
 }
 
 function downloadEvalXlsx() {

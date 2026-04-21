@@ -17,6 +17,7 @@ MODE = "RATIONALE"  # "RATIONALE" or "STRUCTURED"
 API_KEY_PATH = Path("/home/ked/sync/tokens/sonata_openrouter.txt")
 REPO_ROOT = Path(__file__).resolve().parents[1]
 XLSX_PATH = REPO_ROOT / "parameters.xlsx"
+OUTPUTS_DIR = REPO_ROOT / "outputs"
 
 PROMPT_FILES = {
     "RATIONALE":   REPO_ROOT / "data" / "prompt_decision_simple.md",
@@ -100,6 +101,9 @@ def main() -> None:
     prompt_template = prompt_path.read_text(encoding="utf-8")
     prompt_id = prompt_path.name
 
+    OUTPUTS_DIR.mkdir(exist_ok=True)
+    raw_outputs_path = OUTPUTS_DIR / f"eval_outputs_{MODE.lower()}_{date.today().isoformat()}.json"
+
     wb = openpyxl.load_workbook(XLSX_PATH)
     ws = wb["eval"]
 
@@ -130,6 +134,7 @@ def main() -> None:
         return clients[model_name]
 
     MAX_ATTEMPTS = 3
+    raw_outputs: dict[str, dict] = {}
 
     with tqdm(total=len(data_rows), desc=f"Evaluating [{MODE}]", unit="post") as progress:
         for row_idx in data_rows:
@@ -164,6 +169,8 @@ def main() -> None:
                 progress.update(1)
                 continue
 
+            raw_outputs[f"{pair_id}/{case_side}"] = parsed
+
             row_data = build_row_data(parsed, MODE, target_model, prompt_id)
             for field, col_idx in cols.items():
                 ws.cell(row_idx, col_idx).value = row_data.get(field, "")
@@ -172,7 +179,11 @@ def main() -> None:
             progress.update(1)
 
     wb.save(XLSX_PATH)
+    raw_outputs_path.write_text(
+        json.dumps(raw_outputs, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
     print(f"Saved results to {XLSX_PATH.name}")
+    print(f"Saved raw outputs to {raw_outputs_path.name}")
 
 
 if __name__ == "__main__":
