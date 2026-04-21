@@ -16,7 +16,26 @@
       background: #fafafa;
     }
     h1 { font-size: 1.4rem; margin: 0 0 .25rem; }
-    .subtitle { color: #666; font-size: .9rem; margin: 0 0 2rem; }
+    .subtitle { color: #666; font-size: .9rem; margin: 0 0 1.25rem; }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid #e0e0e0;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      padding: .5rem 1.2rem;
+      font-size: .95rem;
+      font-weight: 500;
+      color: #666;
+      cursor: pointer;
+    }
+    .tab-btn.active { color: #0066cc; border-bottom-color: #0066cc; }
+    .tab-btn:hover:not(.active) { color: #333; }
     .card {
       background: #fff;
       border: 1px solid #e0e0e0;
@@ -40,6 +59,18 @@
       outline: 2px solid #0066cc;
       border-color: transparent;
     }
+    .field-input {
+      width: 100%;
+      padding: .5rem .7rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: .95rem;
+      background: #fff;
+    }
+    .field-input:focus {
+      outline: 2px solid #0066cc;
+      border-color: transparent;
+    }
     .btn {
       display: inline-block;
       padding: .55rem 1.4rem;
@@ -57,7 +88,6 @@
     .btn-success:hover { background: #156640; }
     .btn-danger { background: #c0392b; color: #fff; }
     .btn-danger:hover { background: #a93226; }
-    #progress-section { display: none; }
     .progress-label { font-size: .9rem; color: #555; margin: 0 0 .5rem; }
     progress {
       width: 100%;
@@ -71,7 +101,7 @@
     progress::-webkit-progress-bar { background: #e0e0e0; border-radius: 5px; }
     progress::-webkit-progress-value { background: #0066cc; border-radius: 5px; transition: width .2s; }
     progress::-moz-progress-bar { background: #0066cc; border-radius: 5px; }
-    #log {
+    .log {
       margin-top: 1rem;
       background: #1a1a1a;
       color: #d4d4d4;
@@ -86,61 +116,157 @@
     .log-ok { color: #6bcb77; }
     .log-err { color: #ff6b6b; }
     .log-info { color: #74b9ff; }
-    #results-section { display: none; }
     .summary { font-size: .95rem; color: #444; margin: 0 0 1rem; }
   </style>
 </head>
 <body>
 
 <h1>AI Bulk Surveillance Counterfactual Pair Generator</h1>
-<p class="subtitle">Upload a parameters spreadsheet to generate CASE_A / CASE_B post pairs via OpenRouter.</p>
+<p class="subtitle">Generate and evaluate CASE_A / CASE_B post pairs via OpenRouter.</p>
+
+<div class="tab-nav">
+  <button class="tab-btn active" id="tab-btn-generate" onclick="showTab('generate')">Generate pairs</button>
+  <button class="tab-btn" id="tab-btn-evaluate" onclick="showTab('evaluate')">Evaluate posts</button>
+</div>
+
+<!-- ── Generate tab ─────────────────────────────────────────────────────── -->
+<div id="tab-generate">
 
 <div class="card">
   <h2>Configuration</h2>
   <label>
     <span class="label-text">OpenRouter API Key</span>
-    <input type="password" id="api-key" placeholder="sk-or-v1-…" autocomplete="off">
+    <input type="password" id="gen-api-key" placeholder="sk-or-v1-…" autocomplete="off">
   </label>
   <label>
     <span class="label-text">Temperature</span>
-    <input type="number" id="temperature" value="0.7" min="0" max="2" step="0.1" style="width:120px;padding:.5rem .7rem;border:1px solid #ccc;border-radius:5px;font-size:.95rem;background:#fff;">
+    <input type="number" id="gen-temperature" value="0.7" min="0" max="2" step="0.1" class="field-input" style="width:120px;">
   </label>
   <label>
     <span class="label-text">Parameters file (.xlsx — sheet must be named "parameters")</span>
-    <input type="file" id="xlsx-file" accept=".xlsx">
+    <input type="file" id="gen-xlsx-file" accept=".xlsx">
   </label>
-  <button class="btn btn-primary" id="generate-btn" onclick="startGeneration()">Generate pairs</button>
-  <button class="btn btn-danger" id="stop-btn" onclick="stopGeneration()" style="display:none; margin-left:.5rem;">Stop</button>
+  <button class="btn btn-primary" id="gen-generate-btn" onclick="startGeneration()">Generate pairs</button>
+  <button class="btn btn-danger" id="gen-stop-btn" onclick="stopGeneration()" style="display:none; margin-left:.5rem;">Stop</button>
 </div>
 
-<div class="card" id="progress-section">
+<div class="card" id="gen-progress-section" style="display:none">
   <h2>Progress</h2>
-  <p class="progress-label" id="progress-label">Initialising…</p>
-  <progress id="progress-bar" value="0" max="1"></progress>
-  <div id="log"></div>
+  <p class="progress-label" id="gen-progress-label">Initialising…</p>
+  <progress id="gen-progress-bar" value="0" max="1"></progress>
+  <div class="log" id="gen-log"></div>
 </div>
 
-<div class="card" id="results-section">
+<div class="card" id="gen-results-section" style="display:none">
   <h2>Results</h2>
-  <p class="summary" id="results-summary"></p>
-  <button class="btn btn-success" onclick="downloadJson()">Download generated_posts.json</button>
-  <button class="btn btn-success" onclick="downloadXlsx()">Download generated_posts.xlsx</button>
+  <p class="summary" id="gen-results-summary"></p>
+  <button class="btn btn-success" onclick="downloadGenJson()">Download generated_posts.json</button>
+  <button class="btn btn-success" onclick="downloadGenXlsx()">Download generated_posts.xlsx</button>
 </div>
+
+</div><!-- /tab-generate -->
+
+<!-- ── Evaluate tab ─────────────────────────────────────────────────────── -->
+<div id="tab-evaluate" style="display:none">
+
+<div class="card">
+  <h2>Configuration</h2>
+  <label>
+    <span class="label-text">OpenRouter API Key</span>
+    <input type="password" id="eval-api-key" placeholder="sk-or-v1-…" autocomplete="off">
+  </label>
+  <label>
+    <span class="label-text">Temperature</span>
+    <input type="number" id="eval-temperature" value="0.7" min="0" max="2" step="0.1" class="field-input" style="width:120px;">
+  </label>
+  <label>
+    <span class="label-text">Mode</span>
+    <select id="eval-mode" class="field-input">
+      <option value="RATIONALE">Rationale mode</option>
+      <option value="STRUCTURED">Structured output mode</option>
+    </select>
+  </label>
+  <label>
+    <span class="label-text">Eval file (.xlsx — sheet must be named "eval")</span>
+    <input type="file" id="eval-xlsx-file" accept=".xlsx">
+  </label>
+  <button class="btn btn-primary" id="eval-generate-btn" onclick="startEvaluation()">Evaluate posts</button>
+  <button class="btn btn-danger" id="eval-stop-btn" onclick="stopEvaluation()" style="display:none; margin-left:.5rem;">Stop</button>
+</div>
+
+<div class="card" id="eval-progress-section" style="display:none">
+  <h2>Progress</h2>
+  <p class="progress-label" id="eval-progress-label">Initialising…</p>
+  <progress id="eval-progress-bar" value="0" max="1"></progress>
+  <div class="log" id="eval-log"></div>
+</div>
+
+<div class="card" id="eval-results-section" style="display:none">
+  <h2>Results</h2>
+  <p class="summary" id="eval-results-summary"></p>
+  <button class="btn btn-success" onclick="downloadEvalXlsx()">Download filled eval.xlsx</button>
+</div>
+
+</div><!-- /tab-evaluate -->
 
 <script>
+// ── Shared ────────────────────────────────────────────────────────────────────
+
 const LANG_MAP = { EN: "English", FR: "French", PL: "Polish" };
 
-const PROMPT_TEMPLATE = `__PROMPT_TEMPLATE__`;
+function showTab(name) {
+  document.getElementById("tab-generate").style.display = name === "generate" ? "block" : "none";
+  document.getElementById("tab-evaluate").style.display = name === "evaluate" ? "block" : "none";
+  document.getElementById("tab-btn-generate").classList.toggle("active", name === "generate");
+  document.getElementById("tab-btn-evaluate").classList.toggle("active", name === "evaluate");
+}
 
+async function callApi(apiKey, prompt, modelId, temperature) {
+  const resp = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      model: modelId,
+      messages: [{ role: "user", content: prompt }],
+      temperature: temperature,
+    }),
+  });
+
+  if (!resp.ok) {
+    const text = await resp.text().catch(() => "");
+    throw new Error(`API error ${resp.status}: ${text.slice(0, 300)}`);
+  }
+
+  const data = await resp.json();
+  const content = data?.choices?.[0]?.message?.content;
+  if (!content) throw new Error("API returned no content");
+  return content;
+}
+
+function appendLog(logId, msg, cls) {
+  const logEl = document.getElementById(logId);
+  const line = document.createElement("div");
+  line.textContent = msg;
+  if (cls) line.className = cls;
+  logEl.appendChild(line);
+  logEl.scrollTop = logEl.scrollHeight;
+}
+
+// ── Generate tab ──────────────────────────────────────────────────────────────
+
+const PROMPT_TEMPLATE = `__PROMPT_GENERATE__`;
 const SHARED_VARIABLE_KEYS = __SHARED_VARIABLE_KEYS__;
 
 let generatedPostsResult = null;
-let stopRequested = false;
+let genStopRequested = false;
 
 function stopGeneration() {
-  stopRequested = true;
-  document.getElementById("stop-btn").disabled = true;
-  appendLog("Stop requested — finishing current pair…", "log-info");
+  genStopRequested = true;
+  document.getElementById("gen-stop-btn").disabled = true;
+  appendLog("gen-log", "Stop requested — finishing current pair…", "log-info");
 }
 
 function renderPrompt(row, language) {
@@ -173,44 +299,10 @@ function parseCasePair(response) {
   return [caseA, caseB];
 }
 
-async function callApi(apiKey, prompt, modelId, temperature) {
-  const resp = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify({
-      model: modelId,
-      messages: [{ role: "user", content: prompt }],
-      temperature: temperature,
-    }),
-  });
-
-  if (!resp.ok) {
-    const text = await resp.text().catch(() => "");
-    throw new Error(`API error ${resp.status}: ${text.slice(0, 300)}`);
-  }
-
-  const data = await resp.json();
-  const content = data?.choices?.[0]?.message?.content;
-  if (!content) throw new Error("API returned no content");
-  return content;
-}
-
-function appendLog(msg, cls) {
-  const logEl = document.getElementById("log");
-  const line = document.createElement("div");
-  line.textContent = msg;
-  if (cls) line.className = cls;
-  logEl.appendChild(line);
-  logEl.scrollTop = logEl.scrollHeight;
-}
-
 async function startGeneration() {
-  const apiKey = document.getElementById("api-key").value.trim();
-  const temperature = parseFloat(document.getElementById("temperature").value);
-  const fileInput = document.getElementById("xlsx-file");
+  const apiKey = document.getElementById("gen-api-key").value.trim();
+  const temperature = parseFloat(document.getElementById("gen-temperature").value);
+  const fileInput = document.getElementById("gen-xlsx-file");
 
   if (!apiKey) { alert("Please enter your OpenRouter API key."); return; }
   if (isNaN(temperature)) { alert("Please enter a valid temperature."); return; }
@@ -229,16 +321,16 @@ async function startGeneration() {
     return;
   }
 
-  stopRequested = false;
-  document.getElementById("generate-btn").disabled = true;
-  document.getElementById("stop-btn").style.display = "inline-block";
-  document.getElementById("stop-btn").disabled = false;
-  document.getElementById("progress-section").style.display = "block";
-  document.getElementById("results-section").style.display = "none";
-  document.getElementById("log").innerHTML = "";
+  genStopRequested = false;
+  document.getElementById("gen-generate-btn").disabled = true;
+  document.getElementById("gen-stop-btn").style.display = "inline-block";
+  document.getElementById("gen-stop-btn").disabled = false;
+  document.getElementById("gen-progress-section").style.display = "block";
+  document.getElementById("gen-results-section").style.display = "none";
+  document.getElementById("gen-log").innerHTML = "";
 
-  const progressBar = document.getElementById("progress-bar");
-  const progressLabel = document.getElementById("progress-label");
+  const progressBar = document.getElementById("gen-progress-bar");
+  const progressLabel = document.getElementById("gen-progress-label");
   progressBar.max = rows.length;
   progressBar.value = 0;
 
@@ -249,14 +341,13 @@ async function startGeneration() {
   for (let i = 0; i < rows.length; i++) {
     const row = rows[i];
     const pairId = String(row["pair_id"] ?? `P${String(i + 1).padStart(3, "0")}`);
-
     const modelId = String(row["target_model"] ?? "").trim();
     const langCode = String(row["target_lang"] ?? "").trim().toUpperCase();
     const language = LANG_MAP[langCode] ?? langCode;
 
     progressLabel.textContent = `Pair ${i + 1} / ${rows.length}  —  ${pairId}`;
     progressBar.value = i;
-    appendLog(`[${pairId}] Generating… (model: ${modelId || "—"}, lang: ${language || "—"})`);
+    appendLog("gen-log", `[${pairId}] Generating… (model: ${modelId || "—"}, lang: ${language || "—"})`);
 
     try {
       if (!modelId) throw new Error("target_model is missing for this row");
@@ -272,7 +363,7 @@ async function startGeneration() {
         } catch (err) {
           lastErr = err;
           if (attempt < MAX_ATTEMPTS) {
-            appendLog(`[${pairId}] Attempt ${attempt} failed (${err.message}) — retrying…`, "log-info");
+            appendLog("gen-log", `[${pairId}] Attempt ${attempt} failed (${err.message}) — retrying…`, "log-info");
           }
         }
       }
@@ -280,20 +371,19 @@ async function startGeneration() {
 
       generatedPosts[pairId] = { CASE_A: caseAText, CASE_B: caseBText };
       successCount++;
-      appendLog(`[${pairId}] OK`, "log-ok");
+      appendLog("gen-log", `[${pairId}] OK`, "log-ok");
     } catch (err) {
       failCount++;
-      appendLog(`[${pairId}] ERROR: ${err.message}`, "log-err");
+      appendLog("gen-log", `[${pairId}] ERROR: ${err.message}`, "log-err");
     }
 
     progressBar.value = i + 1;
-
-    if (stopRequested) break;
+    if (genStopRequested) break;
   }
 
   generatedPostsResult = generatedPosts;
 
-  const stopped = stopRequested;
+  const stopped = genStopRequested;
   const summary = stopped
     ? `Stopped after ${successCount} pair(s).${failCount > 0 ? ` ${failCount} failed.` : ""}`
     : failCount === 0
@@ -301,27 +391,24 @@ async function startGeneration() {
       : `${successCount} succeeded, ${failCount} failed. See log for details.`;
 
   progressLabel.textContent = `${stopped ? "Stopped" : "Done"} — ${summary}`;
-  appendLog(`${stopped ? "Stopped." : "Finished."} ${summary}`, "log-info");
+  appendLog("gen-log", `${stopped ? "Stopped." : "Finished."} ${summary}`, "log-info");
 
-  document.getElementById("results-summary").textContent = summary;
-  document.getElementById("results-section").style.display = "block";
-  document.getElementById("generate-btn").disabled = false;
-  document.getElementById("stop-btn").style.display = "none";
+  document.getElementById("gen-results-summary").textContent = summary;
+  document.getElementById("gen-results-section").style.display = "block";
+  document.getElementById("gen-generate-btn").disabled = false;
+  document.getElementById("gen-stop-btn").style.display = "none";
 }
 
-function downloadJson() {
+function downloadGenJson() {
   const blob = new Blob([JSON.stringify(generatedPostsResult, null, 2)], { type: "application/json" });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
-  a.href = url;
-  a.download = "generated_posts.json";
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
+  a.href = url; a.download = "generated_posts.json";
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
 }
 
-function downloadXlsx() {
+function downloadGenXlsx() {
   const rows = Object.values(generatedPostsResult).map(cases => ({
     generated_case_a: cases.CASE_A,
     generated_case_b: cases.CASE_B,
@@ -330,6 +417,223 @@ function downloadXlsx() {
   const wb = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb, ws, "generated_posts");
   XLSX.writeFile(wb, "generated_posts.xlsx");
+}
+
+// ── Evaluate tab ──────────────────────────────────────────────────────────────
+
+const EVAL_PROMPTS = {
+  RATIONALE:  `__PROMPT_DECISION_SIMPLE__`,
+  STRUCTURED: `__PROMPT_DECISION_STRUCT__`,
+};
+
+const EVAL_PROMPT_IDS = {
+  RATIONALE:  "prompt_decision_simple.md",
+  STRUCTURED: "prompt_decision_struct.md",
+};
+
+// 0-based column indices matching the eval sheet layout
+const EVAL_INPUT_COL_MODEL = 2;  // C: target_model
+const EVAL_INPUT_COL_POST  = 4;  // E: evaluated_post
+const EVAL_OUTPUT_COLS = {
+  RATIONALE: {
+    model_id: 5, prompt_id: 6, generated_on: 7,
+    decision: 8, short_rationale: 9, reviewer_notes: 10,
+  },
+  STRUCTURED: {
+    model_id: 11, prompt_id: 12, generated_on: 13,
+    decision: 14, evidence_spans: 15, factors_for_decision: 16,
+    factors_against_decision: 17, counterfactual_change: 18,
+    short_rationale: 19, reviewer_notes: 20,
+  },
+};
+
+let evalWorkbook = null;
+let evalStopRequested = false;
+
+function stopEvaluation() {
+  evalStopRequested = true;
+  document.getElementById("eval-stop-btn").disabled = true;
+  appendLog("eval-log", "Stop requested — finishing current post…", "log-info");
+}
+
+function getCell(sheet, r, c) {
+  const addr = XLSX.utils.encode_cell({ r, c });
+  const cell = sheet[addr];
+  return cell ? String(cell.v ?? "") : "";
+}
+
+function setCell(sheet, r, c, value) {
+  const addr = XLSX.utils.encode_cell({ r, c });
+  sheet[addr] = { v: value, t: "s" };
+  // Expand sheet range if needed
+  const range = XLSX.utils.decode_range(sheet["!ref"] || "A1:A1");
+  if (r > range.e.r) range.e.r = r;
+  if (c > range.e.c) range.e.c = c;
+  sheet["!ref"] = XLSX.utils.encode_range(range);
+}
+
+function parseJsonResponse(text) {
+  let t = text.trim();
+  t = t.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
+  return JSON.parse(t);
+}
+
+function joinList(value) {
+  if (Array.isArray(value)) return value.join("\n");
+  return value != null ? String(value) : "";
+}
+
+function today() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+async function startEvaluation() {
+  const apiKey = document.getElementById("eval-api-key").value.trim();
+  const temperature = parseFloat(document.getElementById("eval-temperature").value);
+  const mode = document.getElementById("eval-mode").value;
+  const fileInput = document.getElementById("eval-xlsx-file");
+
+  if (!apiKey) { alert("Please enter your OpenRouter API key."); return; }
+  if (isNaN(temperature)) { alert("Please enter a valid temperature."); return; }
+  if (!fileInput.files.length) { alert("Please select an .xlsx file."); return; }
+
+  let wb;
+  try {
+    const buffer = await fileInput.files[0].arrayBuffer();
+    wb = XLSX.read(buffer, { type: "array" });
+    if (!wb.Sheets["eval"]) throw new Error("Sheet 'eval' not found.");
+  } catch (err) {
+    alert(`Failed to read xlsx: ${err.message}`);
+    return;
+  }
+
+  const sheet = wb.Sheets["eval"];
+  const range = XLSX.utils.decode_range(sheet["!ref"]);
+
+  // Collect data rows (0-based row 2+, skipping two header rows)
+  const dataRows = [];
+  for (let r = 2; r <= range.e.r; r++) {
+    const post = getCell(sheet, r, EVAL_INPUT_COL_POST);
+    if (!post) continue;
+    const alreadyFilled = getCell(sheet, r, EVAL_OUTPUT_COLS[mode].model_id);
+    if (alreadyFilled) continue;
+    dataRows.push(r);
+  }
+
+  if (!dataRows.length) {
+    alert("Nothing to evaluate: no posts found, or all rows already filled for this mode.");
+    return;
+  }
+
+  evalStopRequested = false;
+  evalWorkbook = wb;
+
+  document.getElementById("eval-generate-btn").disabled = true;
+  document.getElementById("eval-stop-btn").style.display = "inline-block";
+  document.getElementById("eval-stop-btn").disabled = false;
+  document.getElementById("eval-progress-section").style.display = "block";
+  document.getElementById("eval-results-section").style.display = "none";
+  document.getElementById("eval-log").innerHTML = "";
+
+  const progressBar = document.getElementById("eval-progress-bar");
+  const progressLabel = document.getElementById("eval-progress-label");
+  progressBar.max = dataRows.length;
+  progressBar.value = 0;
+
+  const cols = EVAL_OUTPUT_COLS[mode];
+  const promptTemplate = EVAL_PROMPTS[mode];
+  const promptId = EVAL_PROMPT_IDS[mode];
+  const generatedOn = today();
+  let successCount = 0;
+  let failCount = 0;
+
+  for (let i = 0; i < dataRows.length; i++) {
+    const r = dataRows[i];
+    const postText = getCell(sheet, r, EVAL_INPUT_COL_POST);
+    const modelId = getCell(sheet, r, EVAL_INPUT_COL_MODEL);
+    const pairId = getCell(sheet, r, 0);
+    const caseSide = getCell(sheet, r, 1);
+    const label = `${pairId}/${caseSide}`;
+
+    progressLabel.textContent = `Row ${i + 1} / ${dataRows.length}  —  ${label}`;
+    progressBar.value = i;
+    appendLog("eval-log", `[${label}] Evaluating…`);
+
+    try {
+      if (!modelId) throw new Error("target_model is missing for this row");
+
+      const prompt = promptTemplate.replace("{post}", postText);
+      const MAX_ATTEMPTS = 3;
+      let parsed = null;
+      let lastErr = null;
+
+      for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+        try {
+          const raw = await callApi(apiKey, prompt, modelId, temperature);
+          parsed = parseJsonResponse(raw);
+          lastErr = null;
+          break;
+        } catch (err) {
+          lastErr = err;
+          if (attempt < MAX_ATTEMPTS) {
+            appendLog("eval-log", `[${label}] Attempt ${attempt} failed (${err.message}) — retrying…`, "log-info");
+          }
+        }
+      }
+      if (lastErr) throw lastErr;
+
+      setCell(sheet, r, cols.model_id, modelId);
+      setCell(sheet, r, cols.prompt_id, promptId);
+      setCell(sheet, r, cols.generated_on, generatedOn);
+      setCell(sheet, r, cols.decision, parsed.decision ?? "");
+      setCell(sheet, r, cols.short_rationale,
+        mode === "RATIONALE" ? (parsed.rationale ?? "") : (parsed.short_rationale ?? ""));
+      setCell(sheet, r, cols.reviewer_notes, "");
+
+      if (mode === "STRUCTURED") {
+        setCell(sheet, r, cols.evidence_spans,          joinList(parsed.evidence_spans));
+        setCell(sheet, r, cols.factors_for_decision,    joinList(parsed.factors_for_decision));
+        setCell(sheet, r, cols.factors_against_decision, joinList(parsed.factors_against_decision));
+        setCell(sheet, r, cols.counterfactual_change,   parsed.counterfactual_change ?? "");
+      }
+
+      successCount++;
+      appendLog("eval-log", `[${label}] OK — ${parsed.decision}`, "log-ok");
+    } catch (err) {
+      failCount++;
+      appendLog("eval-log", `[${label}] ERROR: ${err.message}`, "log-err");
+    }
+
+    progressBar.value = i + 1;
+    if (evalStopRequested) break;
+  }
+
+  const stopped = evalStopRequested;
+  const summary = stopped
+    ? `Stopped after ${successCount} row(s).${failCount > 0 ? ` ${failCount} failed.` : ""}`
+    : failCount === 0
+      ? `All ${successCount} row(s) evaluated successfully.`
+      : `${successCount} succeeded, ${failCount} failed. See log for details.`;
+
+  progressLabel.textContent = `${stopped ? "Stopped" : "Done"} — ${summary}`;
+  appendLog("eval-log", `${stopped ? "Stopped." : "Finished."} ${summary}`, "log-info");
+
+  document.getElementById("eval-results-summary").textContent = summary;
+  document.getElementById("eval-results-section").style.display = "block";
+  document.getElementById("eval-generate-btn").disabled = false;
+  document.getElementById("eval-stop-btn").style.display = "none";
+}
+
+function downloadEvalXlsx() {
+  const outBuf = XLSX.write(evalWorkbook, { bookType: "xlsx", type: "array" });
+  const blob = new Blob([outBuf], {
+    type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = "eval_filled.xlsx";
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
 }
 </script>
 </body>

@@ -13,7 +13,7 @@ from openrouter_api import OpenRouterAPI
 MODEL_ID = "anthropic/claude-sonnet-4.6"
 API_KEY_PATH = Path("/home/ked/sync/tokens/sonata_openrouter.txt")
 REPO_ROOT = Path(__file__).resolve().parents[1]
-PROMPT_PATH = REPO_ROOT / "data" / "prompt.md"
+PROMPT_PATH = REPO_ROOT / "data" / "prompt_generate.md"
 HIDDEN_VARIABLES_PATH = REPO_ROOT / "data" / "hidden_variables.json"
 OUTPUTS_DIR = REPO_ROOT / "outputs"
 METADATA_PATH = OUTPUTS_DIR / "metadata.json"
@@ -137,7 +137,7 @@ def build_metadata() -> dict[str, object]:
         "pair_count": 0,
         "api_call_count": 0,
         "output_count": 0,
-        "prompt_path": "data/prompt.md",
+        "prompt_path": "data/prompt_generate.md",
         "hidden_variables_path": "data/hidden_variables.json",
         "outputs_dir": "outputs",
         "pairs": [],
@@ -153,7 +153,7 @@ def load_metadata() -> dict[str, object]:
         metadata["pairs"] = []
     metadata["model_id"] = MODEL_ID
     metadata["rng_seed"] = RNG_SEED
-    metadata["prompt_path"] = "data/prompt.md"
+    metadata["prompt_path"] = "data/prompt_generate.md"
     metadata["hidden_variables_path"] = "data/hidden_variables.json"
     metadata["outputs_dir"] = "outputs"
     return metadata
