@@ -1,7 +1,7 @@
 [project]
 name = "sonata-ai-bulk-surveillance"
 version = "0.1.0"
-description = "Add your description here"
+description = "SONATA 19 pilot: legal reasoning, explanation format, and data retention in LLM-assisted bulk surveillance"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -11,14 +11,13 @@ dependencies = [
 ]
 
 [project.scripts]
-sonata-build = "build:build"
-sonata-generate = "generate:main"
-sonata-evaluate = "evaluate:main"
+sonata-generate = "sonata_surveillance.generate:main"
+sonata-evaluate = "sonata_surveillance.evaluate:main"
+sonata-build-webapp = "sonata_surveillance.webapp:main"
 
 [build-system]
 requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools]
-package-dir = {"" = "src"}
-py-modules = ["build", "evaluate", "generate", "openrouter_api"]
+[tool.setuptools.packages.find]
+where = ["src"]
