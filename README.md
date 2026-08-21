@@ -4,8 +4,7 @@ Research code and data for the pilot study *Testing Legal Reasoning in Large
 Language Models: Minimal Intrusion, Data Retention, and Justification in AI
 Systems* (NCN SONATA 19).
 
-**Team:** dr Dominika Bychawska-Siniarska (legal analysis, expert review) ·
-mgr Kacper Dudzic (technical).
+⚠️ A note to humans: most of the contents of this repository are **intensely** co-authored by a Claude model and might not be easily understandable. I don't really have a reason to sort them out manually. You can contact me directly for details. ⚠️ 
 
 ---
 
