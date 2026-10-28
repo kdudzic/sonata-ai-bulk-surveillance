@@ -14,8 +14,8 @@ sit at their exact heights. Sources:
   interference, as given in the paper.
 - Figure 2: expert score sums from ``runs/05-results/all-runs-consolidated.xlsx``
   (sheets ``short`` and ``Structured``), 96 rows per model, 480 per format.
-  Note Grok 4.20 structured is 867/96 = 9.03, not the 9.05 quoted in
-  docs/pilot-results.md.
+  Grok 4.20 structured is 867/96 = 9.03; earlier drafts of the paper and of
+  docs/pilot-results.md quoted 9.05 in error.
 - Figure 3: counterfactual pairs whose decision flipped, per flipped variable
   (5 models x n pairs), with the expert label-change rate as benchmark.
 

@@ -37,7 +37,7 @@ Small. Real, but small — and driven by two models.
 
 | Model | `RATIONALE` | `STRUCTURED` | Δ |
 |---|---|---|---|
-| Grok 4.20 | 8.54 | 9.05 | **+0.51** |
+| Grok 4.20 | 8.54 | 9.03 | **+0.49** |
 | GPT-5.5 | 7.96 | 8.53 | **+0.57** |
 | DeepSeek v4 Pro | 7.95 | 8.05 | +0.10 |
 | Mistral Large 2512 | 7.56 | 7.47 | −0.09 |
